@@ -58,31 +58,16 @@
     </ItemGroup>
 
     <ItemGroup>
-      <AndroidResource Remove="Controller\**" />
-      <AndroidResource Remove="Model\**" />
-      <AndroidResource Remove="View\**" />
-      <Compile Remove="Controller\**" />
-      <Compile Remove="Model\**" />
-      <Compile Remove="View\**" />
-      <Content Remove="Controller\**" />
-      <Content Remove="Model\**" />
-      <Content Remove="View\**" />
-      <EmbeddedResource Remove="Controller\**" />
-      <EmbeddedResource Remove="Model\**" />
-      <EmbeddedResource Remove="View\**" />
-      <MauiXaml Remove="Controller\**" />
-      <MauiXaml Remove="Model\**" />
-      <MauiXaml Remove="View\**" />
-      <None Remove="Controller\**" />
-      <None Remove="Model\**" />
-      <None Remove="View\**" />
-    </ItemGroup>
-
-    <ItemGroup>
         <PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
         <PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="$(MauiVersion)" />
         <PackageReference Include="Microsoft.AspNetCore.Components.WebView.Maui" Version="$(MauiVersion)" />
         <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Model\" />
+      <Folder Include="Controller\" />
+      <Folder Include="View\" />
     </ItemGroup>
 
 </Project>
