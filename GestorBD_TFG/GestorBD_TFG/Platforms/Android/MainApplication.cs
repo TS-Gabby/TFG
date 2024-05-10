@@ -1,7 +1,7 @@
 ﻿using Android.App;
 using Android.Runtime;
 
-namespace GestorBD_TFG
+namespace GestorBDTFG
 {
     [Application]
     public class MainApplication : MauiApplication

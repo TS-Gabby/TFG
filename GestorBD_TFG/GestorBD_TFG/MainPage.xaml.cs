@@ -1,4 +1,4 @@
-﻿namespace GestorBD_TFG
+﻿namespace GestorBDTFG
 {
     public partial class MainPage : ContentPage
     {

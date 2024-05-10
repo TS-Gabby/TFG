@@ -1,7 +1,7 @@
 ﻿using ObjCRuntime;
 using UIKit;
 
-namespace GestorBD_TFG
+namespace GestorBDTFG
 {
     public class Program
     {

@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.Logging;
 
-namespace GestorBD_TFG
+namespace GestorBDTFG
 {
     public static class MauiProgram
     {

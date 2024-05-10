@@ -2,7 +2,7 @@ using Microsoft.Maui;
 using Microsoft.Maui.Hosting;
 using System;
 
-namespace GestorBD_TFG
+namespace GestorBDTFG
 {
     internal class Program : MauiApplication
     {

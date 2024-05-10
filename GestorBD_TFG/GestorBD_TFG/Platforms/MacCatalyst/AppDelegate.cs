@@ -1,6 +1,6 @@
 ﻿using Foundation;
 
-namespace GestorBD_TFG
+namespace GestorBDTFG
 {
     [Register("AppDelegate")]
     public class AppDelegate : MauiUIApplicationDelegate
