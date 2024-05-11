@@ -1,4 +1,7 @@
 {
+  "ConnectionStrings": {
+    "DefaultConnection": "Server=DESKTOP-SI2PC6T;Database=Gabby_TFG;Integrated Security=True;TrustServerCertificate=True;"
+  },
   "profiles": {
     "Windows Machine": {
       "commandName": "MsixPackage",

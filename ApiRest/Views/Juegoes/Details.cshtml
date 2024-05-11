@@ -1,0 +1,54 @@
+﻿@model ApiRest.Models.Juego
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Juego</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Nombre)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Nombre)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Compania)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Compania)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Accesible_PC)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Accesible_PC)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Accesible_M)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Accesible_M)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Descuento)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Descuento)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Precio)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Precio)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

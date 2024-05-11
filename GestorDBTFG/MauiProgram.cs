@@ -1,4 +1,6 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
 
 namespace GestorDBTFG
 {
@@ -15,9 +17,13 @@ namespace GestorDBTFG
                 });
 
             builder.Services.AddMauiBlazorWebView();
+            builder.Services.AddDbContext<GestorDBContext>(opciones =>
+            {
+                opciones.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
+            });
 
 #if DEBUG
-    		builder.Services.AddBlazorWebViewDeveloperTools();
+            builder.Services.AddBlazorWebViewDeveloperTools();
     		builder.Logging.AddDebug();
 #endif
 
