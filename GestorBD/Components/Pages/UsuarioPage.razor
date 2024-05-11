@@ -1,0 +1,65 @@
+﻿@page "/usuario"
+
+<h3>Usuarios</h3>
+
+@if (User == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Monney</th>
+                <th>Rol</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var user in User)
+            {
+                <tr>
+                    <td>@user.Id</td>
+                    <td>@user.Name</td>
+                    <td>@user.Money</td>
+                    <td>@user.IdRol</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    private UsuarioModel[]? User;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await Task.Delay(500);
+        // Conexión con la BD
+
+        int[] Ids = new[] { 1, 2, 3, 4 };
+        string[] Names = new[] { "Pepito", "Juanita", "María", "Pedro" };
+        float[] Moneys = new[] { 100f, 0f, 0f, 0f };
+        int?[] Rols = new int?[] { 1, 2, null, 4 };
+
+        User = Enumerable.Range(1, 4).Select(index => new UsuarioModel
+            {
+                Id = Ids[index-1],
+                Name = Names[index-1],
+                Money = Moneys[index-1],
+                IdRol = Rols[index-1],
+            }).ToArray();
+
+    }
+
+    private class UsuarioModel
+    {
+        public int Id { get; set; }
+
+        public string? Name { get; set; }
+        public float Money { get; set; }
+        public int? IdRol { get; set; }
+    }
+}
