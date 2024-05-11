@@ -1,0 +1,51 @@
+﻿@page "/rol"
+
+@using GestorDBTFG.Model
+
+<h3>Roles</h3>
+
+@if (Rol == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var rol in Rol)
+            {
+                <tr>
+                    <td>@rol.Id</td>
+                    <td>@rol.Name</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    private RolModel[]? Rol;
+
+    protected override async Task OnInitializedAsync()
+    {
+        // Conexión con la BD
+
+        await Task.Delay(100);
+
+        int[] Ids = new[] { 1, 2 };
+        string[] Names = new[] { "Trabajador", "Admin" };
+
+        Rol = Enumerable.Range(1, 2).Select(index => new RolModel
+            {
+                Id = Ids[index - 1],
+                Name = Names[index - 1],
+            }).ToArray();
+
+    }
+}
