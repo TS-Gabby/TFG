@@ -7,7 +7,13 @@ var builder = WebApplication.CreateBuilder(args);
 var connectionString = builder.Configuration.GetConnectionString("Connection");
 
 builder.Services.AddDbContext<AppDBContext>(options => 
-    options.UseSqlServer(connectionString)
+    options.UseSqlServer(connectionString, sqlServerOptionsAction: sqlOptions =>
+    {
+        sqlOptions.EnableRetryOnFailure(
+            maxRetryCount: 10,
+            maxRetryDelay: TimeSpan.FromSeconds(30),
+            errorNumbersToAdd: null);
+    })
 );
 
 builder.Services.AddControllers();
