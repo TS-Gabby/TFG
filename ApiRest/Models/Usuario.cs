@@ -8,10 +8,11 @@ namespace ApiRest.Models
         public int Id { get; set; }
 
         public required string Nombre { get; set; }
+        public required string Password { get; set; }
         public float Dinero { get; set; } = 0f;
 
-        public int? IdRol { get; set; }
-        public Rol? Rol { get; set; }
+        public int RolId{ get; set; }
+        public Rol? RolFK { get; set; }
 
         public List<UsuarioXJuego> UsuarioXJuego { get; } = [];
     }

@@ -47,7 +47,7 @@ namespace ApiRest.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> PutJuegoXEtiqueta(int id, JuegoXEtiqueta juegoXEtiqueta)
         {
-            if (id != juegoXEtiqueta.Id_Juego)
+            if (id != juegoXEtiqueta.IdJuego)
             {
                 return BadRequest();
             }
@@ -85,7 +85,7 @@ namespace ApiRest.Controllers
             }
             catch (DbUpdateException)
             {
-                if (JuegoXEtiquetaExists(juegoXEtiqueta.Id_Juego))
+                if (JuegoXEtiquetaExists(juegoXEtiqueta.IdJuego))
                 {
                     return Conflict();
                 }
@@ -95,7 +95,7 @@ namespace ApiRest.Controllers
                 }
             }
 
-            return CreatedAtAction("GetJuegoXEtiqueta", new { id = juegoXEtiqueta.Id_Juego }, juegoXEtiqueta);
+            return CreatedAtAction("GetJuegoXEtiqueta", new { id = juegoXEtiqueta.IdJuego }, juegoXEtiqueta);
         }
 
         // DELETE: api/JuegosXEtiquetas/5
@@ -116,7 +116,7 @@ namespace ApiRest.Controllers
 
         private bool JuegoXEtiquetaExists(int id)
         {
-            return _context.JuegoXEtiqueta.Any(e => e.Id_Juego == id);
+            return _context.JuegoXEtiqueta.Any(e => e.IdJuego == id);
         }
     }
 }

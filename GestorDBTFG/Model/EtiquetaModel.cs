@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace GestorDBTFG.Model
 {
     [Serializable] 
-    public class RolModel
+    public class EtiquetaModel
     {
         public int Id { get; set; }
         public string? Nombre { get; set; }

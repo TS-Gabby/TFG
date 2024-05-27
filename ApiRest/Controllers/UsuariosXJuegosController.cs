@@ -47,7 +47,7 @@ namespace ApiRest.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> PutUsuarioXJuego(int id, UsuarioXJuego usuarioXJuego)
         {
-            if (id != usuarioXJuego.Id_Usuario)
+            if (id != usuarioXJuego.IdUsuario)
             {
                 return BadRequest();
             }
@@ -85,7 +85,7 @@ namespace ApiRest.Controllers
             }
             catch (DbUpdateException)
             {
-                if (UsuarioXJuegoExists(usuarioXJuego.Id_Usuario))
+                if (UsuarioXJuegoExists(usuarioXJuego.IdUsuario))
                 {
                     return Conflict();
                 }
@@ -95,7 +95,7 @@ namespace ApiRest.Controllers
                 }
             }
 
-            return CreatedAtAction("GetUsuarioXJuego", new { id = usuarioXJuego.Id_Usuario }, usuarioXJuego);
+            return CreatedAtAction("GetUsuarioXJuego", new { id = usuarioXJuego.IdUsuario }, usuarioXJuego);
         }
 
         // DELETE: api/UsuariosXJuegos/5
@@ -116,7 +116,7 @@ namespace ApiRest.Controllers
 
         private bool UsuarioXJuegoExists(int id)
         {
-            return _context.UsuarioXJuego.Any(e => e.Id_Usuario == id);
+            return _context.UsuarioXJuego.Any(e => e.IdUsuario == id);
         }
     }
 }

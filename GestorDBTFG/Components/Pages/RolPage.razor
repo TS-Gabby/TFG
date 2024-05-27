@@ -1,4 +1,4 @@
-﻿@page "/rol"
+﻿@* @page "/rol"
 
 @using GestorDBTFG.Model
 
@@ -22,7 +22,7 @@ else
             {
                 <tr>
                     <td>@rol.Id</td>
-                    <td>@rol.Name</td>
+                    <td>@rol.Nombre</td>
                 </tr>
             }
         </tbody>
@@ -44,8 +44,8 @@ else
         Rol = Enumerable.Range(1, 2).Select(index => new RolModel
             {
                 Id = Ids[index - 1],
-                Name = Names[index - 1],
+                Nombre = Names[index - 1],
             }).ToArray();
 
     }
-}
+} *@

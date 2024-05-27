@@ -1,6 +1,27 @@
 @ApiRest_HostAddress = http://localhost:5034
 
-GET {{ApiRest_HostAddress}}/weatherforecast/
+GET {{ApiRest_HostAddress}}/api/Etiquetas
+Accept: application/json
+
+###
+
+GET {{ApiRest_HostAddress}}/api/Roles
+Accept: application/json
+
+###
+GET {{ApiRest_HostAddress}}/api/Usuarios
+Accept: application/json
+
+###
+GET {{ApiRest_HostAddress}}/api/Juegos
+Accept: application/json
+
+###
+GET {{ApiRest_HostAddress}}/api/JuegosXEtiquetas
+Accept: application/json
+
+###
+GET {{ApiRest_HostAddress}}/api/UsuariosXJuegos
 Accept: application/json
 
 ###

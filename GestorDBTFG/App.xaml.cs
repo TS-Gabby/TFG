@@ -1,4 +1,6 @@
-﻿namespace GestorDBTFG
+﻿using GestorDBTFG.View;
+
+namespace GestorDBTFG
 {
     public partial class App : Application
     {
@@ -6,7 +8,7 @@
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+            MainPage = new LoginPage();
         }
     }
 }

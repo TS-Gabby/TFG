@@ -1,5 +1,6 @@
 ﻿@page "/usuario"
 
+@using Newtonsoft.Json;
 @using GestorDBTFG.Model
 
 <h3>Usuarios</h3>
@@ -15,8 +16,9 @@ else
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Name</th>
-                <th>Monney</th>
+                <th>Nombre</th>
+                <th>Contraseña</th>
+                <th>Dinero</th>
                 <th>Rol</th>
             </tr>
         </thead>
@@ -25,9 +27,10 @@ else
             {
                 <tr>
                     <td>@user.Id</td>
-                    <td>@user.Name</td>
-                    <td>@user.Money</td>
-                    <td>@user.IdRol</td>
+                    <td>@user.Nombre</td>
+                    <td>@user.Password</td>
+                    <td>@user.Dinero</td>
+                    <td>@user.RolId</td>
                 </tr>
             }
         </tbody>
@@ -35,26 +38,35 @@ else
 }
 
 @code {
-    private UsuarioModel[]? User;
+    private List<UsuarioModel?> User = [];
 
     protected override async Task OnInitializedAsync()
     {
+        var result = new List<UsuarioModel>();
         // Conexión con la BD
+        try
+        {
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("http://localhost:5034");
+                var response = await client.GetAsync("/api/Usuarios");
+                response.EnsureSuccessStatusCode();
+
+                var stringResult = await response.Content.ReadAsStringAsync();
+                result = JsonConvert.DeserializeObject<List<UsuarioModel>>(stringResult);
+            }
+        }
+        catch (Exception ex) 
+        { Console.WriteLine("Error | " + ex.Message); }
 
         await Task.Delay(100);
 
-        int[] Ids = new[] { 1, 2, 3, 4 };
-        string[] Names = new[] { "Pepito", "Juanita", "María", "Pedro" };
-        float[] Moneys = new[] { 100f, 0f, 0f, 0f };
-        int?[] Rols = new int?[] { 1, 2, null, 4 };
+        // int[] Ids = new[] { 1, 2, 3, 4 };
+        // string[] Names = new[] { "Pepito", "Juanita", "María", "Pedro" };
+        // float[] Moneys = new[] { 100f, 0f, 0f, 0f };
+        // int?[] Rols = new int?[] { 1, 2, null, 4 };
 
-        User = Enumerable.Range(1, 4).Select(index => new UsuarioModel
-        {
-                Id = Ids[index-1],
-                Name = Names[index-1],
-                Money = Moneys[index-1],
-                IdRol = Rols[index-1],
-         }).ToArray();
+        User.AddRange(result);
 
     }
 }

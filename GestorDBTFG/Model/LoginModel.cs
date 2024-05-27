@@ -7,10 +7,9 @@ using System.Threading.Tasks;
 
 namespace GestorDBTFG.Model
 {
-    [Serializable] 
-    public class RolModel
+    public class LoginModel
     {
-        public int Id { get; set; }
-        public string? Nombre { get; set; }
+        public string Username { get; set; }
+        public string Password { get; set; }
     }
 }
