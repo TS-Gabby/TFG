@@ -1,5 +1,7 @@
 using GestorDBTFG.Model;
+using Microsoft.Maui.Controls;
 using Newtonsoft.Json;
+using System;
 
 namespace GestorDBTFG.View;
 
@@ -33,13 +35,13 @@ public partial class LoginPage : ContentPage
         if (result == null)
             return;
 
-        var aux = result.Where(x => x.Nombre == _loginModel.Username).First();
+        var aux = result.Where(x => x.Nombre == _loginModel.Username && x.RolId == 1).First(); //Admins
         if (aux == null)
             return;
 
         if (_loginModel.Password.Equals(aux.Password))
         {
-            var a = "1";
+            await Navigation.PushAsync(new HomePage());
         }
         else
         {

@@ -8,7 +8,7 @@ namespace GestorDBTFG
         {
             InitializeComponent();
 
-            MainPage = new LoginPage();
+            MainPage = new NavigationPage(new LoginPage());
         }
     }
 }

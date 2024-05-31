@@ -77,13 +77,25 @@
     </ItemGroup>
 
     <ItemGroup>
+      <Compile Update="View\EtiquetasPage.xaml.cs">
+        <DependentUpon>EtiquetasPage.xaml</DependentUpon>
+      </Compile>
       <Compile Update="View\LoginPage.xaml.cs">
         <DependentUpon>LoginPage.xaml</DependentUpon>
+      </Compile>
+      <Compile Update="View\HomePage.xaml.cs">
+        <DependentUpon>HomePage.xaml</DependentUpon>
       </Compile>
     </ItemGroup>
 
     <ItemGroup>
+      <MauiXaml Update="View\EtiquetasPage.xaml">
+        <Generator>MSBuild:Compile</Generator>
+      </MauiXaml>
       <MauiXaml Update="View\LoginPage.xaml">
+        <Generator>MSBuild:Compile</Generator>
+      </MauiXaml>
+      <MauiXaml Update="View\HomePage.xaml">
         <Generator>MSBuild:Compile</Generator>
       </MauiXaml>
     </ItemGroup>

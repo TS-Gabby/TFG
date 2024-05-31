@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="GestorDBTFG.View.HomePage">
+
+    <Grid ColumnSpacing="0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <StackLayout Grid.Column="0" WidthRequest="200" BackgroundColor="LightGray">
+            <Button Text="Vista 1" Clicked="OnVista1Clicked" />
+            <Button Text="Vista 2" Clicked="OnVista2Clicked" />
+            <Button Text="Vista 3" Clicked="OnVista3Clicked" />
+        </StackLayout>
+
+        <ContentView x:Name="contentView" Grid.Column="1" />
+    </Grid>
+</ContentPage>
