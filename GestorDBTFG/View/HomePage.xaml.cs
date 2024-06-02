@@ -13,9 +13,9 @@ namespace GestorDBTFG.View
             InitializeComponent();
         }
 
-        private void OnVista1Clicked(object sender, EventArgs e)
+        private async void OnEtiquetasPageClicked(object sender, EventArgs e)
         {
-            //contentView.Content = new Vista1();
+            await Navigation.PushAsync(new EtiquetasPage());
         }
 
         private void OnVista2Clicked(object sender, EventArgs e)

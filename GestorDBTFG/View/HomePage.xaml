@@ -10,7 +10,7 @@
         </Grid.ColumnDefinitions>
 
         <StackLayout Grid.Column="0" WidthRequest="200" BackgroundColor="LightGray">
-            <Button Text="Vista 1" Clicked="OnVista1Clicked" />
+            <Button Text="Etiquetas" Clicked="OnEtiquetasPageClicked" />
             <Button Text="Vista 2" Clicked="OnVista2Clicked" />
             <Button Text="Vista 3" Clicked="OnVista3Clicked" />
         </StackLayout>
