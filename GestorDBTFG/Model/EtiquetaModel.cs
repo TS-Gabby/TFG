@@ -11,6 +11,6 @@ namespace GestorDBTFG.Model
     public class EtiquetaModel
     {
         public int Id { get; set; }
-        public string? Nombre { get; set; }
+        public string? Nombre { get; set; } = "";
     }
 }

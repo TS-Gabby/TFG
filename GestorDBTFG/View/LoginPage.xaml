@@ -2,11 +2,11 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:view="clr-namespace:GestorDBTFG.Model" x:DataType="view:LoginModel"
              x:Class="GestorDBTFG.View.LoginPage">
-    <StackLayout Margin="20">
+    <StackLayout Margin="20" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
         <Label Text="Username" />
-        <Entry Text="{Binding Username}" />
+        <Entry Text="{Binding Username}" WidthRequest="200" Margin="0,0,0,10"/>
         <Label Text="Password" />
-        <Entry Text="{Binding Password}" IsPassword="True" />
-        <Button Text="Login" Clicked="OnLoginButtonClicked" />
+        <Entry Text="{Binding Password}" WidthRequest="200" IsPassword="True" Margin="0,0,0,10"/>
+        <Button Text="Login" Clicked="Login"/>
     </StackLayout>
 </ContentPage>

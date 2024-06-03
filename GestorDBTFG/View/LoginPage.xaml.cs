@@ -1,4 +1,5 @@
 using GestorDBTFG.Model;
+using Microsoft.IdentityModel.Tokens;
 using Microsoft.Maui.Controls;
 using Newtonsoft.Json;
 using System;
@@ -14,7 +15,7 @@ public partial class LoginPage : ContentPage
         BindingContext = _loginModel;
     }
 
-    private async void OnLoginButtonClicked(object sender, EventArgs e)
+    private async void Login(object sender, EventArgs e)
     {
         var result = new List<UsuarioModel>();
         // Conexión con la BD
@@ -29,24 +30,29 @@ public partial class LoginPage : ContentPage
                 var stringResult = await response.Content.ReadAsStringAsync();
                 result = JsonConvert.DeserializeObject<List<UsuarioModel>>(stringResult);
             }
-        }
-        catch { }
 
-        if (result == null)
-            return;
+            if (result.IsNullOrEmpty())
+            {
+                await DisplayAlert("Error", "Credenciales incorrectas", "OK");
+                return;
+            }
 
-        var aux = result.Where(x => x.Nombre == _loginModel.Username && x.RolId == 1).First(); //Admins
-        if (aux == null)
-            return;
+            var aux = result.Where(x => x.Nombre == _loginModel.Username && x.RolId == 1).First(); //Admins
+            if (aux == null)
+            {
+                await DisplayAlert("Error", "Credenciales incorrectas", "OK");
+                return;
+            }
 
-        if (_loginModel.Password.Equals(aux.Password))
-        {
-            await Navigation.PushAsync(new HomePage());
-        }
-        else
-        {
-            var a = "2";
-        }
+            if (_loginModel.Password.Equals(aux.Password))
+            {
+                await Navigation.PushAsync(new HomePage());
+            }
+            else
+            {
+                await DisplayAlert("Error", "Credenciales incorrectas", "OK");
+            }
+        } catch { await DisplayAlert("Error", "Credenciales incorrectas", "OK"); }
 
     }
 }

@@ -73,10 +73,6 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Controller\" />
-    </ItemGroup>
-
-    <ItemGroup>
       <Compile Update="View\EtiquetasPage.xaml.cs">
         <DependentUpon>EtiquetasPage.xaml</DependentUpon>
       </Compile>
@@ -98,6 +94,10 @@
       <MauiXaml Update="View\HomePage.xaml">
         <Generator>MSBuild:Compile</Generator>
       </MauiXaml>
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="ViewModel\" />
     </ItemGroup>
 
 </Project>
