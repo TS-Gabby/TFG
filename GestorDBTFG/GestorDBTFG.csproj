@@ -73,6 +73,18 @@
     </ItemGroup>
 
     <ItemGroup>
+      <Compile Update="View\AdministrarEtiquetas.xaml.cs">
+        <DependentUpon>AdministrarEtiquetas.xaml</DependentUpon>
+      </Compile>
+      <Compile Update="View\JuegosPage.xaml.cs">
+        <DependentUpon>JuegosPage.xaml</DependentUpon>
+      </Compile>
+      <Compile Update="View\UsuariosPage.xaml.cs">
+        <DependentUpon>UsuariosPage.xaml</DependentUpon>
+      </Compile>
+      <Compile Update="View\RolesPage.xaml.cs">
+        <DependentUpon>RolesPage.xaml</DependentUpon>
+      </Compile>
       <Compile Update="View\EtiquetasPage.xaml.cs">
         <DependentUpon>EtiquetasPage.xaml</DependentUpon>
       </Compile>
@@ -85,6 +97,18 @@
     </ItemGroup>
 
     <ItemGroup>
+      <MauiXaml Update="View\AdministrarEtiquetas.xaml">
+        <Generator>MSBuild:Compile</Generator>
+      </MauiXaml>
+      <MauiXaml Update="View\JuegosPage.xaml">
+        <Generator>MSBuild:Compile</Generator>
+      </MauiXaml>
+      <MauiXaml Update="View\UsuariosPage.xaml">
+        <Generator>MSBuild:Compile</Generator>
+      </MauiXaml>
+      <MauiXaml Update="View\RolesPage.xaml">
+        <Generator>MSBuild:Compile</Generator>
+      </MauiXaml>
       <MauiXaml Update="View\EtiquetasPage.xaml">
         <Generator>MSBuild:Compile</Generator>
       </MauiXaml>

@@ -2,11 +2,19 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:view="clr-namespace:GestorDBTFG.Model" x:DataType="view:LoginModel"
              x:Class="GestorDBTFG.View.LoginPage">
-    <StackLayout Margin="20" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
-        <Label Text="Username" />
-        <Entry Text="{Binding Username}" WidthRequest="200" Margin="0,0,0,10"/>
-        <Label Text="Password" />
-        <Entry Text="{Binding Password}" WidthRequest="200" IsPassword="True" Margin="0,0,0,10"/>
-        <Button Text="Login" Clicked="Login"/>
-    </StackLayout>
+    <Frame BorderColor="Black" Padding="0" HorizontalOptions="Center" VerticalOptions="Start">
+        <StackLayout Margin="20" Padding="25,20,20,25" WidthRequest="250" HeightRequest="400" BackgroundColor="LightGrey">
+            
+            <Label Text="Login" Padding="0,5,15,5" FontSize="Medium" FontAttributes="Bold" TextColor="Black"/>
+
+            <Label Text="Username" Padding="0,5,2,5" TextColor="Black"/>
+            <Entry Text="{Binding Username}" TextColor="Black" />
+
+            <Label Text="Password" Padding="10,5,20,5" TextColor="Black"/>
+            <Entry Text="{Binding Password}" TextColor="Black" IsPassword="True" />
+
+            <Button Text="Login" VerticalOptions="EndAndExpand" HorizontalOptions="Fill" Clicked="Login" TextColor="White"/>
+            
+        </StackLayout>
+    </Frame>
 </ContentPage>

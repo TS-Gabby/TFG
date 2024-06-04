@@ -18,14 +18,19 @@ namespace GestorDBTFG.View
             await Navigation.PushAsync(new EtiquetasPage());
         }
 
-        private void OnVista2Clicked(object sender, EventArgs e)
+        private async void OnRolesPageClicked(object sender, EventArgs e)
         {
-            //contentView.Content = new Vista2();
+            await Navigation.PushAsync(new RolesPage());
         }
 
-        private void OnVista3Clicked(object sender, EventArgs e)
+        private async void OnJuegosPageClicked(object sender, EventArgs e)
         {
-            //contentView.Content = new Vista3();
+            await Navigation.PushAsync(new JuegosPage());
+        }
+
+        private async void OnUsuariosPageClicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new UsuariosPage());
         }
     }
 }

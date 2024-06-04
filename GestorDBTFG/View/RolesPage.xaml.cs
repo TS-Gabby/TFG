@@ -9,17 +9,17 @@ using Windows.UI.Xaml.Data;
 
 namespace GestorDBTFG.View;
 
-public partial class EtiquetasPage : ContentPage
+public partial class RolesPage : ContentPage
 {
-    public List<EtiquetaModel> ListaEtiquetas;
+    public List<RolModel> ListaRoles;
     public ICommand EditCommand { get; set; }
     public ICommand DeleteCommand { get; set; }
 
-    public EtiquetasPage()
+    public RolesPage()
     {
         InitializeComponent();
 
-        ListaEtiquetas = [new EtiquetaModel(){ Id = 0, Nombre="Default" }];
+        ListaRoles = [new RolModel(){ Id = 0, Nombre="Default" }];
         _ = Init();
 
         EditCommand = new Command<int>(Editar);
@@ -33,53 +33,51 @@ public partial class EtiquetasPage : ContentPage
         return true;
     }
 
-
     public async Task Init()
     {
-        var result = new List<EtiquetaModel>();
+        var result = new List<RolModel>();
 
         try
         {
             using (var client = new HttpClient())
             {
                 client.BaseAddress = new Uri("http://localhost:5034");
-                var response = await client.GetAsync("/api/Etiquetas");
+                var response = await client.GetAsync("/api/Roles");
                 response.EnsureSuccessStatusCode();
 
                 var stringResult = await response.Content.ReadAsStringAsync();
-                result = JsonConvert.DeserializeObject<List<EtiquetaModel>>(stringResult);
+                result = JsonConvert.DeserializeObject<List<RolModel>>(stringResult);
             }
         }
         catch (Exception ex)
         { Console.WriteLine("Error | " + ex.Message); }
 
         if (result != null)
-            ListaEtiquetas = result;
+            ListaRoles = result;
 
-        EtiquetasCollection.ItemsSource = ListaEtiquetas;
+        RolesCollection.ItemsSource = ListaRoles;
     }
 
     private async void Editar(int id) 
     {
         try
         {
-            var result = new List<EtiquetaModel>();
-            var Etiqueta = new EtiquetaModel();
+            var result = new List<RolModel>();
+            var Etiqueta = new RolModel();
 
             using (var client = new HttpClient())
             {
                 client.BaseAddress = new Uri("http://localhost:5034");
-                var response = await client.GetAsync("/api/Etiquetas");
+                var response = await client.GetAsync("/api/Roles");
                 response.EnsureSuccessStatusCode();
 
                 var stringResult = await response.Content.ReadAsStringAsync();
-                result = JsonConvert.DeserializeObject<List<EtiquetaModel>>(stringResult);
+                result = JsonConvert.DeserializeObject<List<RolModel>>(stringResult);
             }
 
             if (result != null)
             {
                 Etiqueta = result.Where(x => x.Id == id).FirstOrDefault();
-                await Navigation.PushAsync(new AdministrarEtiquetas(Etiqueta));
             }
         }
         catch (Exception ex)
@@ -90,29 +88,12 @@ public partial class EtiquetasPage : ContentPage
         var result = await DisplayAlert("Información", "¿Seguro que quieres eliminar este elemento?", "Sí", "No");
         if (result)
         {
-            try
-            {
-                using (var client = new HttpClient())
-                {
-                    client.BaseAddress = new Uri("http://localhost:5034");
-                    var response = await client.DeleteAsync($"/api/Etiquetas/{id}");
-                    response.EnsureSuccessStatusCode();
 
-                    var stringResult = await response.Content.ReadAsStringAsync();
-                }
-
-                await DisplayAlert("Información", "Etiqueta eliminada correctamente.", "Ok");
-                await Init();
-            }
-            catch (Exception ex)
-            {
-                await DisplayAlert("Advertencia", "Ha ocurrido un error: " + ex.Message, "Ok");
-            }
         }
     }
 
     private async void CrearNuevo(object sender, EventArgs args)
     {
-        await Navigation.PushAsync(new AdministrarEtiquetas(null));
+        await Navigation.PushAsync(new HomePage());
     }
 }

@@ -3,18 +3,25 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="GestorDBTFG.View.HomePage">
 
-    <Grid ColumnSpacing="0">
+    <Grid ColumnSpacing="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="200" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
 
-        <StackLayout Grid.Column="0" WidthRequest="200" BackgroundColor="LightGray">
-            <Button Text="Etiquetas" Clicked="OnEtiquetasPageClicked" />
-            <Button Text="Vista 2" Clicked="OnVista2Clicked" />
-            <Button Text="Vista 3" Clicked="OnVista3Clicked" />
-        </StackLayout>
+        <Button Text="Tabla Etiquetas" Grid.Column="0" Grid.Row="0" Clicked="OnEtiquetasPageClicked" BackgroundColor="Yellow" TextColor="Black"/>
+        <Button Text="Tabla Roles" Grid.Column="0" Grid.Row="1" Clicked="OnRolesPageClicked" BackgroundColor="LightBlue" TextColor="Black"/>
+        <Button Text="Tabla Juegos" Grid.Column="0" Grid.Row="2" Clicked="OnJuegosPageClicked" BackgroundColor="Orange" TextColor="Black"/>
+        <Button Text="Tabla Usuarios" Grid.Column="0" Grid.Row="3" Clicked="OnUsuariosPageClicked" BackgroundColor="Purple" TextColor="Black"/>
 
-        <ContentView x:Name="contentView" Grid.Column="1" />
+        <VerticalStackLayout Grid.Column="1" Grid.Row="0" Grid.RowSpan="4" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="LightCyan">
+            <Label Text="Bienvenido a mi TFG" FontSize="50" TextColor="Black" HorizontalOptions="Center" VerticalOptions="Center" FontAttributes="Bold" />
+        </VerticalStackLayout>
     </Grid>
 </ContentPage>
