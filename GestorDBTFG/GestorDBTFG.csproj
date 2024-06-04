@@ -73,6 +73,9 @@
     </ItemGroup>
 
     <ItemGroup>
+      <Compile Update="View\AdministrarRoles.xaml.cs">
+        <DependentUpon>AdministrarRoles.xaml</DependentUpon>
+      </Compile>
       <Compile Update="View\AdministrarEtiquetas.xaml.cs">
         <DependentUpon>AdministrarEtiquetas.xaml</DependentUpon>
       </Compile>
@@ -97,6 +100,9 @@
     </ItemGroup>
 
     <ItemGroup>
+      <MauiXaml Update="View\AdministrarRoles.xaml">
+        <Generator>MSBuild:Compile</Generator>
+      </MauiXaml>
       <MauiXaml Update="View\AdministrarEtiquetas.xaml">
         <Generator>MSBuild:Compile</Generator>
       </MauiXaml>

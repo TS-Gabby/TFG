@@ -18,6 +18,7 @@ public partial class LoginPage : ContentPage
     private async void Login(object sender, EventArgs e)
     {
         var result = new List<UsuarioModel>();
+        var result_rol = new List<RolModel>();
         // Conexión con la BD
         try
         {
@@ -29,22 +30,36 @@ public partial class LoginPage : ContentPage
 
                 var stringResult = await response.Content.ReadAsStringAsync();
                 result = JsonConvert.DeserializeObject<List<UsuarioModel>>(stringResult);
+
+
+                response = await client.GetAsync("/api/Roles");
+                response.EnsureSuccessStatusCode();
+
+                var stringResult_rol = await response.Content.ReadAsStringAsync();
+                result_rol = JsonConvert.DeserializeObject<List<RolModel>>(stringResult_rol);
             }
 
-            if (result.IsNullOrEmpty())
+            if (result.IsNullOrEmpty() || result_rol.IsNullOrEmpty())
             {
                 await DisplayAlert("Error", "Credenciales incorrectas", "OK");
                 return;
             }
 
-            var aux = result.Where(x => x.Nombre == _loginModel.Username && x.RolId == 1).First(); //Admins
-            if (aux == null)
+            var aux_rol = result_rol.Where(x => (x.Nombre??"").Equals("Admin")).FirstOrDefault(); // Solo Admins
+            if (aux_rol == null)
             {
                 await DisplayAlert("Error", "Credenciales incorrectas", "OK");
                 return;
             }
 
-            if (_loginModel.Password.Equals(aux.Password))
+            var aux_user = result.Where(x => x.Nombre == _loginModel.Username && x.RolId == aux_rol.Id).First(); 
+            if (aux_user == null)
+            {
+                await DisplayAlert("Error", "Credenciales incorrectas", "OK");
+                return;
+            }
+
+            if (_loginModel.Password.Equals(aux_user.Password))
             {
                 await Navigation.PushAsync(new HomePage());
             }

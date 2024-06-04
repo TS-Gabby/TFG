@@ -12,6 +12,11 @@ namespace GestorDBTFG.View
         {
             InitializeComponent();
         }
+        protected override bool OnBackButtonPressed()
+        {
+            Navigation.PushAsync(new LoginPage());
+            return true;
+        }
 
         private async void OnEtiquetasPageClicked(object sender, EventArgs e)
         {
