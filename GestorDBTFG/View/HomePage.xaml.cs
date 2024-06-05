@@ -1,6 +1,7 @@
 using Microsoft.Maui;
 using GestorDBTFG.Model;
 using Microsoft.Maui.Controls;
+using GestorDBTFG.Sqlite;
 using System;
 
 
@@ -36,6 +37,11 @@ namespace GestorDBTFG.View
         private async void OnUsuariosPageClicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new UsuariosPage());
+        }
+
+        private async void Config(object sender, EventArgs args)
+        {
+            await Navigation.PushAsync(new ConfigPage());
         }
     }
 }

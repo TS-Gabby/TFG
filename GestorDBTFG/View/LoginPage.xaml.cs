@@ -1,4 +1,6 @@
 using GestorDBTFG.Model;
+using GestorDBTFG.Sqlite;
+using GestorDBTFG.Sqlite.Models;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.Maui.Controls;
 using Newtonsoft.Json;
@@ -52,7 +54,7 @@ public partial class LoginPage : ContentPage
                 return;
             }
 
-            var aux_user = result.Where(x => x.Nombre == _loginModel.Username && x.RolId == aux_rol.Id).First(); 
+            var aux_user = result.Where(x => x.Nombre == _loginModel.Username && x.RolId == aux_rol.Id).FirstOrDefault(); 
             if (aux_user == null)
             {
                 await DisplayAlert("Error", "Credenciales incorrectas", "OK");
@@ -61,13 +63,47 @@ public partial class LoginPage : ContentPage
 
             if (_loginModel.Password.Equals(aux_user.Password))
             {
+                await CrearUsuarioActual(aux_user);
                 await Navigation.PushAsync(new HomePage());
             }
             else
             {
                 await DisplayAlert("Error", "Credenciales incorrectas", "OK");
             }
-        } catch { await DisplayAlert("Error", "Credenciales incorrectas", "OK"); }
+        } catch (Exception ex) { await DisplayAlert("Error", "Se ha producido un error: " + ex.Message, "OK"); }
 
+
+    }
+    async static Task CrearUsuarioActual(UsuarioModel usuario)
+    {
+        var dbContext = new DbContextSQLite(Constants.DatabasePath);
+
+        UsuarioActual nuevoUsuario = new()
+        {
+            Code = usuario.Id,
+            Nombre = usuario.Nombre,
+            Password = usuario.Password,
+            Dinero = usuario.Dinero,
+            RolId = usuario.RolId,
+        };
+
+        var usuarios = await dbContext.GetUsuariosAsync();
+        if (usuarios.Count > 0)
+        {
+            UsuarioActual usuarioEditar = usuarios.First();
+            nuevoUsuario.Id = usuarioEditar.Id;
+        }
+        else
+        {
+            nuevoUsuario.Id = 0;
+        }
+
+        await dbContext.SaveUsuarioAsync(nuevoUsuario);
+
+    }
+
+    private async void Config(object sender, EventArgs args)
+    {
+        await Navigation.PushAsync(new ConfigPage());
     }
 }
