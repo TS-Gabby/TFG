@@ -1,4 +1,5 @@
 using GestorDBTFG.Model;
+using GestorDBTFG.Resources;
 using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json;
 using System.Text;
@@ -16,6 +17,8 @@ public partial class AdministrarUsuarios : ContentPage
     {
         InitializeComponent();
 
+        Traducir();
+
         if (usuario != null)
         {
             Usuario = usuario;
@@ -25,6 +28,17 @@ public partial class AdministrarUsuarios : ContentPage
         _ = Init();
 
         BindingContext = Usuario;
+    }
+
+    public void Traducir()
+    {
+        Title = Global.AdministrarUsuario;
+        Titulo_Usuario.Text = Global.Usuario;
+        Id.Text = Global.Identificador;
+        Contraseña.Text = Global.Contrasenha;
+        Dinero.Text = Global.Dinero;
+        PickerRoles.Title = Global.Roles;
+        Guardar.Text = Global.Guardar;
     }
 
     private async Task Init()

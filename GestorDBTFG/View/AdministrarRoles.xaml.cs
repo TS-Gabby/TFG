@@ -1,4 +1,5 @@
 using GestorDBTFG.Model;
+using GestorDBTFG.Resources;
 using Newtonsoft.Json;
 using System.Text;
 
@@ -12,6 +13,8 @@ public partial class AdministrarRoles : ContentPage
     {
         InitializeComponent();
 
+        Traducir();
+
         if (rol != null)
         {
             Rol = rol;
@@ -19,6 +22,15 @@ public partial class AdministrarRoles : ContentPage
 
         this.Title = rol == null ? "Nuevo Rol" : "Editar Rol"; 
         BindingContext = Rol;
+    }
+
+    public void Traducir()
+    {
+        Title = Global.AdminstrarRoles;
+        Title_Rol.Text = Global.Rol;
+        Id.Text = Global.Identificador;
+        Nombre.Text = Global.Nombre;
+        Guardar.Text = Global.Guardar;
     }
 
     private async void Llamar(object sender, EventArgs args)

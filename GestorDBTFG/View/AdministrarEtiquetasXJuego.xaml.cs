@@ -53,6 +53,7 @@ public partial class AdministrarEtiquetasXJuego : ContentPage
             ListaJuegoXEtiquetas = result.Where(x => x.IdJuego == Juego.Id).Select(x => new JuegoXEtiquetaModel()
             {
                 IdEtiqueta = x.IdEtiqueta,
+                NombreE = x.NombreE,
                 IdJuego = x.IdJuego,
                 NombreJ = Juego.Nombre ?? "",
             }).ToList();

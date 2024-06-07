@@ -1,4 +1,5 @@
 using GestorDBTFG.Model;
+using GestorDBTFG.Resources;
 using GestorDBTFG.Sqlite;
 using GestorDBTFG.Sqlite.Models;
 using Microsoft.IdentityModel.Tokens;
@@ -12,7 +13,24 @@ public partial class LoginPage : ContentPage
     public LoginPage()
     {
         InitializeComponent();
+
+        Traducir();
+
         BindingContext = _loginModel;
+    }
+    protected override bool OnBackButtonPressed()
+    {
+        Navigation.PushAsync(new LoginPage());
+        return true;
+    }
+
+    public void Traducir()
+    {
+        Configuracion.Text = Global.Configuracion;
+        Titulo_IniciarSesion.Text = Global.IniciarSesion;
+        Boton_IniciarSesion.Text = Global.IniciarSesion;
+        Password.Text = Global.Contrasenha;
+        Nombre.Text = Global.Nombre;
     }
 
     private async void Login(object sender, EventArgs e)

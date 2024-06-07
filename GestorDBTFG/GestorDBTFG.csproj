@@ -74,6 +74,11 @@
     </ItemGroup>
 
     <ItemGroup>
+      <Compile Update="Resources\Global.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>Global.resx</DependentUpon>
+      </Compile>
       <Compile Update="View\CrearEtiquetasXJuego.xaml.cs">
         <DependentUpon>CrearEtiquetasXJuego.xaml</DependentUpon>
       </Compile>
@@ -159,6 +164,13 @@
 
     <ItemGroup>
       <Folder Include="ViewModel\" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <EmbeddedResource Update="Resources\Global.resx">
+        <Generator>ResXFileCodeGenerator</Generator>
+        <LastGenOutput>Global.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
     </ItemGroup>
 
 </Project>

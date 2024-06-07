@@ -1,7 +1,21 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="GestorDBTFG.View.ConfigPage"
-             Title="Configuración">
-    
+             x:Class="GestorDBTFG.View.ConfigPage">
+    <Grid>
+        <Frame BorderColor="Black" Padding="0" HorizontalOptions="Center" VerticalOptions="Start">
+            <StackLayout Margin="20" Padding="25,20,20,25" WidthRequest="250" HeightRequest="400" BackgroundColor="LightGrey">
+
+                <Picker x:Name="PikerLanguaje" SelectedIndexChanged="OnChange">
+                    <Picker.ItemsSource>
+                        <x:Array Type="{x:Type x:String}">
+                            <x:String>Español</x:String>
+                            <x:String>Galego</x:String>
+                        </x:Array>
+                    </Picker.ItemsSource>
+                </Picker>
+
+            </StackLayout>
+        </Frame>
+    </Grid>
 </ContentPage>

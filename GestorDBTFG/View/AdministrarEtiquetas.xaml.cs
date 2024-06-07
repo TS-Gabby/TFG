@@ -1,4 +1,5 @@
 using GestorDBTFG.Model;
+using GestorDBTFG.Resources;
 using Newtonsoft.Json;
 using System.Text;
 
@@ -12,6 +13,8 @@ public partial class AdministrarEtiquetas : ContentPage
     {
         InitializeComponent();
 
+        Traducir();
+
         if (etiqueta != null)
         {
             Etiqueta = etiqueta;
@@ -19,6 +22,15 @@ public partial class AdministrarEtiquetas : ContentPage
 
         this.Title = etiqueta == null ? "Nueva Etiqueta" : "Editar Etiqueta"; 
         BindingContext = Etiqueta;
+    }
+
+    public void Traducir()
+    {
+        Title = Global.AdministrarEtiquetas;
+        Title_Etiqueta.Text = Global.Etiqueta;
+        Id.Text = Global.Identificador;
+        Nombre.Text = Global.Nombre;
+        Guardar.Text = Global.Guardar;
     }
 
     private async void Llamar(object sender, EventArgs args)

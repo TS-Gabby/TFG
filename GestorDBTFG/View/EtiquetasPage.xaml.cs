@@ -1,4 +1,5 @@
 using GestorDBTFG.Model;
+using GestorDBTFG.Resources;
 using Newtonsoft.Json;
 using System.Windows.Input;
 
@@ -14,6 +15,8 @@ public partial class EtiquetasPage : ContentPage
     {
         InitializeComponent();
 
+        Traducir();
+
         ListaEtiquetas = [new EtiquetaModel(){ Id = 0, Nombre="Default" }];
         _ = Init();
 
@@ -28,6 +31,14 @@ public partial class EtiquetasPage : ContentPage
         return true;
     }
 
+    private void Traducir()
+    {
+        Title = Global.TablaEtiqueta;
+        EtiquetasCollection.EmptyView = Global.SinDatos;
+        Etiquetas.Text = Global.Etiquetas;
+        Nombre.Text = Global.Nombre;
+        AñadirEtiqueta.SetValue(ToolTipProperties.TextProperty, Global.AñadirEtiqueta);
+    }
 
     public async Task Init()
     {

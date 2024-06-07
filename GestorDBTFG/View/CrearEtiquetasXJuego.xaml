@@ -2,27 +2,26 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:view="clr-namespace:GestorDBTFG.Model" x:DataType="view:JuegoXEtiquetaModel"
              x:Class="GestorDBTFG.View.CrearEtiquetasXJuego"
-             Title="Añadir EtiquetasXJuegos"
              x:Name="Page">
 
     <Frame BorderColor="Black" Padding="0" HorizontalOptions="Center" VerticalOptions="Start">
         <StackLayout Margin="20" Padding="25,20,20,25" WidthRequest="250" HeightRequest="400" BackgroundColor="LightGrey">
 
-            <Label Text="EtiquetaXJuego" Padding="0,5,15,5" FontSize="Medium" FontAttributes="Bold" TextColor="Black"/>
+            <Label x:Name="Title_EtiquetaXJuego" Padding="0,5,15,5" FontSize="Medium" FontAttributes="Bold" TextColor="Black"/>
 
             <Entry Text="{Binding IdJuego}" TextColor="Black" IsVisible="False" />
             <Entry Text="{Binding IdEtiqueta}" TextColor="Black" IsVisible="False"/>
 
-            <Label Text="Nombre" Padding="10,5,20,5" TextColor="Black"/>
+            <Label x:Name="NombreJ" Padding="10,5,20,5" TextColor="Black" IsEnabled="False"/>
             <Entry Text="{Binding NombreJ}" TextColor="Black" />
 
-            <Picker Title="Etiqueta" x:Name="PickerEtiquetaXJuego" ItemsSource="{Binding Source={x:Reference Name=Page},Path=EtiquetasNuevas}" SelectedItem="{Binding Source={x:Reference Name=Page}, Path=SelectedEtiqueta}" TextColor="Black">
+            <Picker x:Name="PickerEtiquetaXJuego" ItemsSource="{Binding Source={x:Reference Name=Page},Path=EtiquetasNuevas}" SelectedItem="{Binding Source={x:Reference Name=Page}, Path=SelectedEtiqueta}" TextColor="Black">
                 <Picker.ItemDisplayBinding>
                     <Binding Path="Name"/>
                 </Picker.ItemDisplayBinding>
             </Picker>
 
-            <Button Text="Guardar" VerticalOptions="EndAndExpand" HorizontalOptions="Fill" Clicked="Llamar" TextColor="White"/>
+            <Button x:Name="Guardar" VerticalOptions="EndAndExpand" HorizontalOptions="Fill" Clicked="Llamar" TextColor="White"/>
 
         </StackLayout>
     </Frame>

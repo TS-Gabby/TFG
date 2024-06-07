@@ -1,4 +1,5 @@
 using GestorDBTFG.Model;
+using GestorDBTFG.Resources;
 using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json;
 using System.Text;
@@ -30,6 +31,8 @@ public partial class CrearEtiquetasXJuego : ContentPage
     {
         InitializeComponent();
 
+        Traducir();
+
         Juego = juegos;
 
         JuegoXEtiqueta.IdJuego = juegos.Id;
@@ -38,6 +41,15 @@ public partial class CrearEtiquetasXJuego : ContentPage
         _ = Init();
 
         BindingContext = JuegoXEtiqueta;
+    }
+
+    public void Traducir()
+    {
+        Title = Global.AñadirEtiquetaXJuego;
+        Title_EtiquetaXJuego.Text = Global.EtiquetaXJuego;
+        NombreJ.Text = Global.NombreJ;
+        PickerEtiquetaXJuego.Title = Global.Etiqueta;
+        Guardar.Text = Global.Guardar;
     }
 
     private async Task Init()

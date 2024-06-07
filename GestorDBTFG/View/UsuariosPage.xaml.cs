@@ -1,6 +1,8 @@
 using GestorDBTFG.Model;
+using GestorDBTFG.Resources;
 using Newtonsoft.Json;
 using System.Windows.Input;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace GestorDBTFG.View;
 
@@ -14,6 +16,8 @@ public partial class UsuariosPage : ContentPage
     {
         InitializeComponent();
 
+        Traducir();
+
         ListaUsuarios = [new UsuarioModel(){ Id = 0, Nombre="Default", Password="1234" }];
         _ = Init();
 
@@ -26,6 +30,18 @@ public partial class UsuariosPage : ContentPage
     {
         Navigation.PushAsync(new HomePage());
         return true;
+    }
+
+    public void Traducir()
+    {
+        Title = Global.TablaUsuario;
+        UsuariosCollection.EmptyView = Global.SinDatos;
+        Añadir.SetValue(ToolTipProperties.TextProperty, Global.AñadirUsuario);
+        Usuarios.Text = Global.Usuario;
+        Id.Text = Global.Identificador;
+        Nombre.Text = Global.Nombre;
+        Contraseña.Text = Global.Contrasenha;
+        Dinero.Text = Global.Nombre;
     }
 
     public async Task Init()

@@ -1,15 +1,29 @@
+using GestorDBTFG.Resources;
+
 namespace GestorDBTFG.View
 {
     public partial class HomePage : ContentPage
     {
         public HomePage()
         {
-            InitializeComponent();
+            InitializeComponent(); 
+            Traducir();
         }
         protected override bool OnBackButtonPressed()
         {
             Navigation.PushAsync(new LoginPage());
             return true;
+        }
+
+        public void Traducir()
+        {
+            Title = Global.Casa;
+            TablaEtiquetas.Text = Global.TablaEtiqueta;
+            TablaJuegos.Text = Global.TablaJuego;
+            TablaRoles.Text = Global.TablaRol;
+            TablaUsuarios.Text = Global.TablaUsuario;
+            Bienvenida.Text = Global.Bienvenida;
+            Configuración.Text = Global.Configuracion;
         }
 
         private async void OnEtiquetasPageClicked(object sender, EventArgs e)

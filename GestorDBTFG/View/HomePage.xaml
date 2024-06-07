@@ -15,14 +15,14 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <Button Text="Tabla Etiquetas" Grid.Column="0" Grid.Row="0" Clicked="OnEtiquetasPageClicked" BackgroundColor="Yellow" TextColor="Black"/>
-        <Button Text="Tabla Roles" Grid.Column="0" Grid.Row="1" Clicked="OnRolesPageClicked" BackgroundColor="LightBlue" TextColor="Black"/>
-        <Button Text="Tabla Juegos" Grid.Column="0" Grid.Row="2" Clicked="OnJuegosPageClicked" BackgroundColor="Orange" TextColor="Black"/>
-        <Button Text="Tabla Usuarios" Grid.Column="0" Grid.Row="3" Clicked="OnUsuariosPageClicked" BackgroundColor="Purple" TextColor="Black"/>
+        <Button x:Name="TablaEtiquetas" Grid.Column="0" Grid.Row="0" Clicked="OnEtiquetasPageClicked" BackgroundColor="Yellow" TextColor="Black"/>
+        <Button x:Name="TablaRoles" Grid.Column="0" Grid.Row="1" Clicked="OnRolesPageClicked" BackgroundColor="LightBlue" TextColor="Black"/>
+        <Button x:Name="TablaJuegos" Grid.Column="0" Grid.Row="2" Clicked="OnJuegosPageClicked" BackgroundColor="Orange" TextColor="Black"/>
+        <Button x:Name="TablaUsuarios" Grid.Column="0" Grid.Row="3" Clicked="OnUsuariosPageClicked" BackgroundColor="Purple" TextColor="Black"/>
 
         <VerticalStackLayout Grid.Column="1" Grid.Row="0" Grid.RowSpan="4" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="LightCyan">
-            <Label Text="Bienvenido a mi TFG" FontSize="50" TextColor="Black" HorizontalOptions="Center" VerticalOptions="Center" FontAttributes="Bold" />
-            <Button Text="Configuración" Margin="0,0,40,0" Clicked="Config" HorizontalOptions="End" WidthRequest="50" HeightRequest="50" VerticalOptions="Start"/>
+            <Label x:Name="Bienvenida" FontSize="50" TextColor="Black" HorizontalOptions="Center" VerticalOptions="Center" FontAttributes="Bold" />
+            <Button x:Name="Configuración" Margin="0,0,40,0" Clicked="Config" HorizontalOptions="End" WidthRequest="120" HeightRequest="50" VerticalOptions="Start"/>
         </VerticalStackLayout>
     </Grid>
 </ContentPage>

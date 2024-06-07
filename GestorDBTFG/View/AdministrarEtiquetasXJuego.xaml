@@ -10,6 +10,7 @@
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="200"/>
                     <ColumnDefinition Width="200" />
+                    <ColumnDefinition Width="200" />
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="200"/>
                 </Grid.ColumnDefinitions>
@@ -18,10 +19,10 @@
                     <RowDefinition/>
                 </Grid.RowDefinitions>
 
-                <Frame BorderColor="Black" BackgroundColor="Yellow" CornerRadius="0" Grid.Column="0" Grid.ColumnSpan="4" Grid.Row="0">
+                <Frame BorderColor="Black" BackgroundColor="Yellow" CornerRadius="0" Grid.Column="0" Grid.ColumnSpan="5" Grid.Row="0">
                     <Label Text="Etiquetas" TextColor="Black" VerticalOptions="Center" HorizontalOptions="Center" FontSize="Medium" FontAttributes="Bold" />
                 </Frame>
-                <Frame BorderColor="Black" BackgroundColor="Yellow" CornerRadius="0" Grid.Column="4" Grid.ColumnSpan="1" Grid.Row="0">
+                <Frame BorderColor="Black" BackgroundColor="Yellow" CornerRadius="0" Grid.Column="5" Grid.ColumnSpan="1" Grid.Row="0">
                     <Button Text="+" ToolTipProperties.Text="Añadir Etiqueta" TextColor="Black" Clicked="CrearNuevo" HorizontalOptions="End" FontSize="Medium" FontAttributes="Bold" WidthRequest="50" />
                 </Frame>
 
@@ -29,12 +30,15 @@
                     <Label Text="Id Etiqueta" VerticalOptions="Center" HorizontalOptions="Center" FontSize="Medium" FontAttributes="Bold" />
                 </Frame>
                 <Frame BorderColor="Black" BackgroundColor="LightGrey" CornerRadius="0" Grid.Column="1" Grid.Row="1" >
-                    <Label Text="Id Juego" VerticalOptions="Center" HorizontalOptions="Center" FontSize="Medium" FontAttributes="Bold" />
+                    <Label Text="Nombre Etiqueta" VerticalOptions="Center" HorizontalOptions="Center" FontSize="Medium" FontAttributes="Bold" />
                 </Frame>
                 <Frame BorderColor="Black" BackgroundColor="LightGrey" CornerRadius="0" Grid.Column="2" Grid.Row="1" >
-                    <Label Text="Nombre Juego" VerticalOptions="Center" HorizontalOptions="Center" FontSize="Medium" FontAttributes="Bold" />
+                    <Label Text="Id Juego" VerticalOptions="Center" HorizontalOptions="Center" FontSize="Medium" FontAttributes="Bold" />
                 </Frame>
                 <Frame BorderColor="Black" BackgroundColor="LightGrey" CornerRadius="0" Grid.Column="3" Grid.Row="1" >
+                    <Label Text="Nombre Juego" VerticalOptions="Center" HorizontalOptions="Center" FontSize="Medium" FontAttributes="Bold" />
+                </Frame>
+                <Frame BorderColor="Black" BackgroundColor="LightGrey" CornerRadius="0" Grid.Column="4" Grid.Row="1" >
                     <Label Text="" />
                 </Frame>
             </Grid>
@@ -45,6 +49,7 @@
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="200"/>
                         <ColumnDefinition Width="200" />
+                        <ColumnDefinition Width="200" />
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="200"/>
                     </Grid.ColumnDefinitions>
@@ -52,12 +57,15 @@
                         <Label Text="{Binding IdEtiqueta}" HorizontalTextAlignment="Center" VerticalOptions="Center" TextColor="Black" />
                     </Frame>
                     <Frame BorderColor="Black" Padding="10" BackgroundColor="LightGrey" CornerRadius="0" Grid.Column="1" >
-                        <Label Text="{Binding IdJuego}" HorizontalTextAlignment="Center" VerticalOptions="Center" TextColor="Black" />
+                        <Label Text="{Binding NombreE}" HorizontalOptions="FillAndExpand" VerticalOptions="Center" HorizontalTextAlignment="Center" TextColor="Black" />
                     </Frame>
                     <Frame BorderColor="Black" Padding="10" BackgroundColor="LightGrey" CornerRadius="0" Grid.Column="2" >
-                        <Label Text="{Binding NombreJ}" HorizontalOptions="FillAndExpand" VerticalOptions="Center" HorizontalTextAlignment="Center" TextColor="Black" />
+                        <Label Text="{Binding IdJuego}" HorizontalTextAlignment="Center" VerticalOptions="Center" TextColor="Black" />
                     </Frame>
                     <Frame BorderColor="Black" Padding="10" BackgroundColor="LightGrey" CornerRadius="0" Grid.Column="3" >
+                        <Label Text="{Binding NombreJ}" HorizontalOptions="FillAndExpand" VerticalOptions="Center" HorizontalTextAlignment="Center" TextColor="Black" />
+                    </Frame>
+                    <Frame BorderColor="Black" Padding="10" BackgroundColor="LightGrey" CornerRadius="0" Grid.Column="4" >
                         <Button  Command="{Binding Source={x:Reference Name=Page},Path=BorrarCommand}" CommandParameter="{Binding IdEtiqueta}" VerticalOptions="Center" BackgroundColor="Green" Text="Delete" WidthRequest="100" />
                     </Frame>
                 </Grid>

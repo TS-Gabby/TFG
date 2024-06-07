@@ -1,6 +1,8 @@
 using GestorDBTFG.Model;
+using GestorDBTFG.Resources;
 using Newtonsoft.Json;
 using System.Windows.Input;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace GestorDBTFG.View;
 
@@ -14,6 +16,8 @@ public partial class RolesPage : ContentPage
     {
         InitializeComponent();
 
+        Traducir();
+
         ListaRoles = [new RolModel(){ Id = 0, Nombre="Default" }];
         _ = Init();
 
@@ -26,6 +30,16 @@ public partial class RolesPage : ContentPage
     {
         Navigation.PushAsync(new HomePage());
         return true;
+    }
+
+    public void Traducir()
+    {
+        Title = Global.TablaRol;
+        Roles.Text = Global.Roles;
+        Id.Text = Global.Identificador;
+        Nombre.Text = Global.Nombre;
+        RolesCollection.EmptyView = Global.SinDatos;
+        Añadir.SetValue(ToolTipProperties.TextProperty, Global.AñadirRol);
     }
 
     public async Task Init()

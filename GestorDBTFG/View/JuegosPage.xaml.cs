@@ -1,12 +1,15 @@
 using GestorDBTFG.Model;
+using GestorDBTFG.Resources;
 using Newtonsoft.Json;
 using System.Windows.Input;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace GestorDBTFG.View;
 
 public partial class JuegosPage : ContentPage
 {
     public List<JuegoModel> ListaJuegos;
+    public string AñadirEtiqueta;
     public ICommand EditCommand { get; set; }
     public ICommand DeleteCommand { get; set; }
     public ICommand EditTagCommand { get; set; }
@@ -14,6 +17,8 @@ public partial class JuegosPage : ContentPage
     public JuegosPage()
     {
         InitializeComponent();
+
+        Traducir();
 
         ListaJuegos = [new JuegoModel(){ Id = 0, Nombre="Default" }];
         _ = Init();
@@ -28,6 +33,21 @@ public partial class JuegosPage : ContentPage
     {
         Navigation.PushAsync(new HomePage());
         return true;
+    }
+
+    public void Traducir()
+    {
+        Title = Global.TablaJuego;
+        JuegosCollection.EmptyView = Global.SinDatos;
+        Id.Text = Global.Identificador;
+        Nombre.Text = Global.Nombre;
+        Compañia.Text = Global.Compañia;
+        PC.Text = Global.DisponiblePC;
+        Movil.Text = Global.DisponibleM;
+        Porcentaje.Text = Global.Porcentaje;
+        Precio.Text = Global.Precio;
+        Añadir.SetValue(ToolTipProperties.TextProperty, Global.AñadirJuego);
+        AñadirEtiqueta = Global.AñadirEtiquetaXJuego;
     }
 
     public async Task Init()
