@@ -1,8 +1,4 @@
-﻿using CommunityToolkit.Maui.Core;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Logging;
-using Microsoft.Maui.Controls.Compatibility.Hosting;
+﻿using Microsoft.Extensions.Logging;
 
 namespace GestorDBTFG
 {

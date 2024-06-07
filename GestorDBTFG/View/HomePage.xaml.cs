@@ -1,10 +1,3 @@
-using Microsoft.Maui;
-using GestorDBTFG.Model;
-using Microsoft.Maui.Controls;
-using GestorDBTFG.Sqlite;
-using System;
-
-
 namespace GestorDBTFG.View
 {
     public partial class HomePage : ContentPage

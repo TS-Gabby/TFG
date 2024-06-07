@@ -1,11 +1,6 @@
-using Microsoft.AspNetCore.Components;
-using System.Collections.Generic;
-using Microsoft.EntityFrameworkCore.Metadata;
 using GestorDBTFG.Model;
 using Newtonsoft.Json;
 using System.Windows.Input;
-using System.Collections.ObjectModel;
-using Windows.UI.Xaml.Data;
 
 namespace GestorDBTFG.View;
 
