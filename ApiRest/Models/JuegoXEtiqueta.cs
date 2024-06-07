@@ -8,8 +8,8 @@ namespace ApiRest.Models
         public int IdEtiqueta { get; set; }
 
         //Propiedades de navegación
-        public Juego JuegoFK { get; set; } = null!;
-        public Etiqueta EtiquetaFK { get; set; } = null!;
+        public Juego? JuegoFK { get; set; } = null!;
+        public Etiqueta? EtiquetaFK { get; set; } = null!;
 
     }
 }

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:view="clr-namespace:GestorDBTFG.Model" x:DataType="view:JuegoModel"
+             x:Class="GestorDBTFG.View.AdministrarJuegos"
+             Title="Administrar Juegos"
+             x:Name="Page">
+
+    <Frame BorderColor="Black" Padding="0" HorizontalOptions="Center" VerticalOptions="Start">
+        <StackLayout Margin="20" Padding="25,20,20,25" WidthRequest="250" HeightRequest="500" BackgroundColor="LightGrey">
+
+            <Label Text="Juego" Padding="0,5,15,5" FontSize="Medium" FontAttributes="Bold" TextColor="Black"/>
+
+            <Label Text="Id" Padding="10,5,20,5" TextColor="Black" IsVisible="False"/>
+            <Entry Text="{Binding Id}" TextColor="Black" IsVisible="False"/>
+
+            <Label Text="Nombre" Padding="10,5,20,5" TextColor="Black"/>
+            <Entry Text="{Binding Nombre}" TextColor="Black" />
+
+            <Label Text="Compañía" Padding="10,5,20,5" TextColor="Black"/>
+            <Entry Text="{Binding Compania}" TextColor="Black" />
+
+            <StackLayout Orientation="Horizontal" Padding="10,5,20,5" >
+                <CheckBox IsChecked="{Binding Accesible_PC}" />
+                <Label Text="Juego para PC" VerticalOptions="Center"/>
+            </StackLayout>
+
+            <StackLayout Orientation="Horizontal" Padding="10,5,20,5" >
+                <CheckBox IsChecked="{Binding Accesible_M}" />
+                <Label Text="Juego para Móvil" VerticalOptions="Center"/>
+            </StackLayout>
+            
+            <Label Text="Descuento %" Padding="10,5,20,5" TextColor="Black"/>
+            <Entry Text="{Binding Descuento}" TextColor="Black" />
+
+            <Label Text="Precio" Padding="10,5,20,5" TextColor="Black"/>
+            <Entry Text="{Binding Precio}" TextColor="Black" />
+
+            <Button Text="Guardar" VerticalOptions="EndAndExpand" HorizontalOptions="Fill" Clicked="Llamar" TextColor="White"/>
+
+        </StackLayout>
+    </Frame>
+</ContentPage>

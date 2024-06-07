@@ -74,11 +74,23 @@
     </ItemGroup>
 
     <ItemGroup>
+      <Compile Update="View\CrearEtiquetasXJuego.xaml.cs">
+        <DependentUpon>CrearEtiquetasXJuego.xaml</DependentUpon>
+      </Compile>
+      <Compile Update="View\AdministrarJuegos.xaml.cs">
+        <DependentUpon>AdministrarJuegos.xaml</DependentUpon>
+      </Compile>
+      <Compile Update="View\AdministrarUsuarios.xaml.cs">
+        <DependentUpon>AdministrarUsuarios.xaml</DependentUpon>
+      </Compile>
       <Compile Update="View\AdministrarRoles.xaml.cs">
         <DependentUpon>AdministrarRoles.xaml</DependentUpon>
       </Compile>
       <Compile Update="View\AdministrarEtiquetas.xaml.cs">
         <DependentUpon>AdministrarEtiquetas.xaml</DependentUpon>
+      </Compile>
+      <Compile Update="View\AdministrarEtiquetasXJuego.xaml.cs">
+        <DependentUpon>AdministrarEtiquetasXJuego.xaml</DependentUpon>
       </Compile>
       <Compile Update="View\JuegosPage.xaml.cs">
         <DependentUpon>JuegosPage.xaml</DependentUpon>
@@ -104,10 +116,22 @@
     </ItemGroup>
 
     <ItemGroup>
+      <MauiXaml Update="View\CrearEtiquetasXJuego.xaml">
+        <Generator>MSBuild:Compile</Generator>
+      </MauiXaml>
+      <MauiXaml Update="View\AdministrarJuegos.xaml">
+        <Generator>MSBuild:Compile</Generator>
+      </MauiXaml>
+      <MauiXaml Update="View\AdministrarUsuarios.xaml">
+        <Generator>MSBuild:Compile</Generator>
+      </MauiXaml>
       <MauiXaml Update="View\AdministrarRoles.xaml">
         <Generator>MSBuild:Compile</Generator>
       </MauiXaml>
       <MauiXaml Update="View\AdministrarEtiquetas.xaml">
+        <Generator>MSBuild:Compile</Generator>
+      </MauiXaml>
+      <MauiXaml Update="View\AdministrarEtiquetasXJuego.xaml">
         <Generator>MSBuild:Compile</Generator>
       </MauiXaml>
       <MauiXaml Update="View\JuegosPage.xaml">

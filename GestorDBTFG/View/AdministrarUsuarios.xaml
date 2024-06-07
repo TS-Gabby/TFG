@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:view="clr-namespace:GestorDBTFG.Model" x:DataType="view:UsuarioModel"
+             x:Class="GestorDBTFG.View.AdministrarUsuarios"
+             Title="Administrar Usuarios"
+             x:Name="Page">
+
+    <Frame BorderColor="Black" Padding="0" HorizontalOptions="Center" VerticalOptions="Start">
+        <StackLayout Margin="20" Padding="25,20,20,25" WidthRequest="250" HeightRequest="400" BackgroundColor="LightGrey">
+
+            <Label Text="Usuario" Padding="0,5,15,5" FontSize="Medium" FontAttributes="Bold" TextColor="Black"/>
+
+            <Label Text="Id" Padding="10,5,20,5" TextColor="Black" IsVisible="False"/>
+            <Entry Text="{Binding Id}" TextColor="Black" IsVisible="False"/>
+
+            <Label Text="Nombre" Padding="10,5,20,5" TextColor="Black"/>
+            <Entry Text="{Binding Nombre}" TextColor="Black" />
+
+            <Label Text="Contraseña" Padding="10,5,20,5" TextColor="Black"/>
+            <Entry Text="{Binding Password}" TextColor="Black" />
+
+            <Label Text="Dinero" Padding="10,5,20,5" TextColor="Black"/>
+            <Entry Text="{Binding Dinero}" TextColor="Black" />
+
+            <Picker Title="Rol" x:Name="PickerRoles" ItemsSource="{Binding Source={x:Reference Name=Page},Path=Roles}" SelectedItem="{Binding Source={x:Reference Name=Page}, Path=SelectedRol}"  TextColor="Black">
+                <Picker.ItemDisplayBinding>
+                    <Binding Path="Name"/>
+                </Picker.ItemDisplayBinding>
+            </Picker>
+
+            <Button Text="Guardar" VerticalOptions="EndAndExpand" HorizontalOptions="Fill" Clicked="Llamar" TextColor="White"/>
+
+        </StackLayout>
+    </Frame>
+</ContentPage>

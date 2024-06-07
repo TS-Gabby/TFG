@@ -74,7 +74,7 @@
                         <Button  Command="{Binding Source={x:Reference Name=Page},Path=EditCommand}" CommandParameter="{Binding Id}" VerticalOptions="Center" BackgroundColor="Green" Text="Edit" WidthRequest="100" />
                     </Frame>
                     <Frame BorderColor="Black" Padding="10" BackgroundColor="LightGrey" CornerRadius="0" Grid.Column="5" >
-                        <Button  Command="{Binding Source={x:Reference Name=Page},Path=DeleteCommand}" CommandParameter="{Binding Id}" VerticalOptions="Center" BackgroundColor="Green" Text="Delete" WidthRequest="100" />
+                        <Button  Command="{Binding Source={x:Reference Name=Page},Path=BorrarCommand}" CommandParameter="{Binding Id}" VerticalOptions="Center" BackgroundColor="Green" Text="Delete" WidthRequest="100" />
                     </Frame>
                 </Grid>
             </DataTemplate>

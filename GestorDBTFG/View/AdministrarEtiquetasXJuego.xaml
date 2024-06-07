@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="GestorDBTFG.View.AdministrarEtiquetasXJuego"
+             x:Name="Page">
+
+    <CollectionView x:Name="JuegoXEtiquetasCollection" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Margin="10,0,0,20" EmptyView="No data available">
+        <CollectionView.Header>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="200"/>
+                    <ColumnDefinition Width="200" />
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="200"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <Frame BorderColor="Black" BackgroundColor="Yellow" CornerRadius="0" Grid.Column="0" Grid.ColumnSpan="4" Grid.Row="0">
+                    <Label Text="Etiquetas" TextColor="Black" VerticalOptions="Center" HorizontalOptions="Center" FontSize="Medium" FontAttributes="Bold" />
+                </Frame>
+                <Frame BorderColor="Black" BackgroundColor="Yellow" CornerRadius="0" Grid.Column="4" Grid.ColumnSpan="1" Grid.Row="0">
+                    <Button Text="+" ToolTipProperties.Text="Añadir Etiqueta" TextColor="Black" Clicked="CrearNuevo" HorizontalOptions="End" FontSize="Medium" FontAttributes="Bold" WidthRequest="50" />
+                </Frame>
+
+                <Frame BorderColor="Black" BackgroundColor="LightGrey" CornerRadius="0" Grid.Column="0" Grid.Row="1" >
+                    <Label Text="Id Etiqueta" VerticalOptions="Center" HorizontalOptions="Center" FontSize="Medium" FontAttributes="Bold" />
+                </Frame>
+                <Frame BorderColor="Black" BackgroundColor="LightGrey" CornerRadius="0" Grid.Column="1" Grid.Row="1" >
+                    <Label Text="Id Juego" VerticalOptions="Center" HorizontalOptions="Center" FontSize="Medium" FontAttributes="Bold" />
+                </Frame>
+                <Frame BorderColor="Black" BackgroundColor="LightGrey" CornerRadius="0" Grid.Column="2" Grid.Row="1" >
+                    <Label Text="Nombre Juego" VerticalOptions="Center" HorizontalOptions="Center" FontSize="Medium" FontAttributes="Bold" />
+                </Frame>
+                <Frame BorderColor="Black" BackgroundColor="LightGrey" CornerRadius="0" Grid.Column="3" Grid.Row="1" >
+                    <Label Text="" />
+                </Frame>
+            </Grid>
+        </CollectionView.Header>
+        <CollectionView.ItemTemplate>
+            <DataTemplate>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="200"/>
+                        <ColumnDefinition Width="200" />
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="200"/>
+                    </Grid.ColumnDefinitions>
+                    <Frame BorderColor="Black" Padding="10" BackgroundColor="LightGrey" CornerRadius="0" Grid.Column="0" >
+                        <Label Text="{Binding IdEtiqueta}" HorizontalTextAlignment="Center" VerticalOptions="Center" TextColor="Black" />
+                    </Frame>
+                    <Frame BorderColor="Black" Padding="10" BackgroundColor="LightGrey" CornerRadius="0" Grid.Column="1" >
+                        <Label Text="{Binding IdJuego}" HorizontalTextAlignment="Center" VerticalOptions="Center" TextColor="Black" />
+                    </Frame>
+                    <Frame BorderColor="Black" Padding="10" BackgroundColor="LightGrey" CornerRadius="0" Grid.Column="2" >
+                        <Label Text="{Binding NombreJ}" HorizontalOptions="FillAndExpand" VerticalOptions="Center" HorizontalTextAlignment="Center" TextColor="Black" />
+                    </Frame>
+                    <Frame BorderColor="Black" Padding="10" BackgroundColor="LightGrey" CornerRadius="0" Grid.Column="3" >
+                        <Button  Command="{Binding Source={x:Reference Name=Page},Path=BorrarCommand}" CommandParameter="{Binding IdEtiqueta}" VerticalOptions="Center" BackgroundColor="Green" Text="Delete" WidthRequest="100" />
+                    </Frame>
+                </Grid>
+            </DataTemplate>
+        </CollectionView.ItemTemplate>
+
+    </CollectionView>
+</ContentPage>

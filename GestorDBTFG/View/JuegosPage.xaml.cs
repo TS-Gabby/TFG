@@ -14,6 +14,7 @@ public partial class JuegosPage : ContentPage
     public List<JuegoModel> ListaJuegos;
     public ICommand EditCommand { get; set; }
     public ICommand DeleteCommand { get; set; }
+    public ICommand EditTagCommand { get; set; }
 
     public JuegosPage()
     {
@@ -24,6 +25,7 @@ public partial class JuegosPage : ContentPage
 
         EditCommand = new Command<int>(Editar);
         DeleteCommand = new Command<int>(Borrar);
+        EditTagCommand = new Command<int>(EditarTag);
 
         BindingContext = this;
     }
@@ -58,12 +60,13 @@ public partial class JuegosPage : ContentPage
         JuegosCollection.ItemsSource = ListaJuegos;
     }
 
-    private async void Editar(int id) 
+    private async void Editar(int id)
     {
+        var Juego = new JuegoModel();
+
         try
         {
-            var result = new List<EtiquetaModel>();
-            var Etiqueta = new EtiquetaModel();
+            var result = new List<JuegoModel>();
 
             using (var client = new HttpClient())
             {
@@ -72,28 +75,75 @@ public partial class JuegosPage : ContentPage
                 response.EnsureSuccessStatusCode();
 
                 var stringResult = await response.Content.ReadAsStringAsync();
-                result = JsonConvert.DeserializeObject<List<EtiquetaModel>>(stringResult);
+                result = JsonConvert.DeserializeObject<List<JuegoModel>>(stringResult);
             }
 
             if (result != null)
             {
-                Etiqueta = result.Where(x => x.Id == id).FirstOrDefault();
+                Juego = result.Where(x => x.Id == id).FirstOrDefault();
             }
         }
         catch (Exception ex)
         { Console.WriteLine("Error | " + ex.Message); }
+
+        await Navigation.PushAsync(new AdministrarJuegos(Juego));
+    }
+    private async void EditarTag(int id)
+    {
+        var Juego = new JuegoModel();
+
+        try
+        {
+            var result = new List<JuegoModel>();
+
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("http://localhost:5034");
+                var response = await client.GetAsync("/api/Juegos");
+                response.EnsureSuccessStatusCode();
+
+                var stringResult = await response.Content.ReadAsStringAsync();
+                result = JsonConvert.DeserializeObject<List<JuegoModel>>(stringResult);
+            }
+
+            if (result != null)
+            {
+                Juego = result.Where(x => x.Id == id).FirstOrDefault();
+            }
+        }
+        catch (Exception ex)
+        { Console.WriteLine("Error | " + ex.Message); }
+
+        await Navigation.PushAsync(new AdministrarEtiquetasXJuego(Juego));
     }
     private async void Borrar(int id)
     {
         var result = await DisplayAlert("Información", "¿Seguro que quieres eliminar este elemento?", "Sí", "No");
         if (result)
         {
+            try
+            {
+                using (var client = new HttpClient())
+                {
+                    client.BaseAddress = new Uri("http://localhost:5034");
+                    var response = await client.DeleteAsync($"/api/Juegos/{id}");
+                    response.EnsureSuccessStatusCode();
 
+                    var stringResult = await response.Content.ReadAsStringAsync();
+                }
+
+                await DisplayAlert("Información", "Juego eliminado correctamente.", "Ok");
+                await Init();
+            }
+            catch (Exception ex)
+            {
+                await DisplayAlert("Advertencia", "Ha ocurrido un error: " + ex.Message, "Ok");
+            }
         }
     }
 
     private async void CrearNuevo(object sender, EventArgs args)
     {
-        await Navigation.PushAsync(new HomePage());
+        await Navigation.PushAsync(new AdministrarJuegos(null));
     }
 }

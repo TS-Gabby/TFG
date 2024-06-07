@@ -8,7 +8,7 @@
     <Frame BorderColor="Black" Padding="0" HorizontalOptions="Center" VerticalOptions="Start">
         <StackLayout Margin="20" Padding="25,20,20,25" WidthRequest="250" HeightRequest="400" BackgroundColor="LightGrey">
 
-            <Label Text="Etiqueta" Padding="0,5,15,5" FontSize="Medium" FontAttributes="Bold" TextColor="Black"/>
+            <Label Text="Rol" Padding="0,5,15,5" FontSize="Medium" FontAttributes="Bold" TextColor="Black"/>
 
             <Label Text="Id" Padding="10,5,20,5" TextColor="Black" IsVisible="False"/>
             <Entry Text="{Binding Id}" TextColor="Black" IsVisible="False"/>

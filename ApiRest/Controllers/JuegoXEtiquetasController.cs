@@ -12,27 +12,27 @@ namespace ApiRest.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class JuegosXEtiquetasController : ControllerBase
+    public class JuegoXEtiquetasController : ControllerBase
     {
         private readonly AppDBContext _context;
 
-        public JuegosXEtiquetasController(AppDBContext context)
+        public JuegoXEtiquetasController(AppDBContext context)
         {
             _context = context;
         }
 
-        // GET: api/JuegosXEtiquetas
+        // GET: api/JuegoXEtiquetas
         [HttpGet]
         public async Task<ActionResult<IEnumerable<JuegoXEtiqueta>>> GetJuegoXEtiqueta()
         {
             return await _context.JuegoXEtiqueta.ToListAsync();
         }
 
-        // GET: api/JuegosXEtiquetas/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<JuegoXEtiqueta>> GetJuegoXEtiqueta(int id)
+        // GET: api/JuegoXEtiquetas/5
+        [HttpGet("{idJuego}/{idEtiqueta}")]
+        public async Task<ActionResult<JuegoXEtiqueta>> GetJuegoXEtiqueta(int idJuego, int idEtiqueta)
         {
-            var juegoXEtiqueta = await _context.JuegoXEtiqueta.FindAsync(id);
+            var juegoXEtiqueta = await _context.JuegoXEtiqueta.FindAsync(idJuego, idEtiqueta);
 
             if (juegoXEtiqueta == null)
             {
@@ -42,12 +42,12 @@ namespace ApiRest.Controllers
             return juegoXEtiqueta;
         }
 
-        // PUT: api/JuegosXEtiquetas/5
+        // PUT: api/JuegoXEtiquetas/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutJuegoXEtiqueta(int id, JuegoXEtiqueta juegoXEtiqueta)
+        [HttpPut("{idJuego}/{idEtiqueta}")]
+        public async Task<IActionResult> PutJuegoXEtiqueta(int idJuego, int idEtiqueta, JuegoXEtiqueta juegoXEtiqueta)
         {
-            if (id != juegoXEtiqueta.IdJuego)
+            if (idJuego != juegoXEtiqueta.IdJuego && idEtiqueta != juegoXEtiqueta.IdEtiqueta)
             {
                 return BadRequest();
             }
@@ -60,7 +60,7 @@ namespace ApiRest.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!JuegoXEtiquetaExists(id))
+                if (!JuegoXEtiquetaExists(idJuego, idEtiqueta))
                 {
                     return NotFound();
                 }
@@ -73,7 +73,7 @@ namespace ApiRest.Controllers
             return NoContent();
         }
 
-        // POST: api/JuegosXEtiquetas
+        // POST: api/JuegoXEtiquetas
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
         public async Task<ActionResult<JuegoXEtiqueta>> PostJuegoXEtiqueta(JuegoXEtiqueta juegoXEtiqueta)
@@ -85,7 +85,7 @@ namespace ApiRest.Controllers
             }
             catch (DbUpdateException)
             {
-                if (JuegoXEtiquetaExists(juegoXEtiqueta.IdJuego))
+                if (JuegoXEtiquetaExists(juegoXEtiqueta.IdJuego, juegoXEtiqueta.IdEtiqueta))
                 {
                     return Conflict();
                 }
@@ -98,11 +98,11 @@ namespace ApiRest.Controllers
             return CreatedAtAction("GetJuegoXEtiqueta", new { id = juegoXEtiqueta.IdJuego }, juegoXEtiqueta);
         }
 
-        // DELETE: api/JuegosXEtiquetas/5
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteJuegoXEtiqueta(int id)
+        // DELETE: api/JuegoXEtiquetas/5
+        [HttpDelete("{idJuego}/{idEtiqueta}")]
+        public async Task<IActionResult> DeleteJuegoXEtiqueta(int idJuego, int idEtiqueta)
         {
-            var juegoXEtiqueta = await _context.JuegoXEtiqueta.FindAsync(id);
+            var juegoXEtiqueta = await _context.JuegoXEtiqueta.FindAsync(idJuego, idEtiqueta);
             if (juegoXEtiqueta == null)
             {
                 return NotFound();
@@ -114,9 +114,9 @@ namespace ApiRest.Controllers
             return NoContent();
         }
 
-        private bool JuegoXEtiquetaExists(int id)
+        private bool JuegoXEtiquetaExists(int idJuego, int idEtiqueta)
         {
-            return _context.JuegoXEtiqueta.Any(e => e.IdJuego == id);
+            return _context.JuegoXEtiqueta.Any(e => e.IdJuego == idJuego && e.IdEtiqueta == idEtiqueta);
         }
     }
 }

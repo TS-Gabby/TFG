@@ -17,7 +17,7 @@ GET {{ApiRest_HostAddress}}/api/Juegos
 Accept: application/json
 
 ###
-GET {{ApiRest_HostAddress}}/api/JuegosXEtiquetas
+GET {{ApiRest_HostAddress}}/api/JuegoXEtiquetas
 Accept: application/json
 
 ###

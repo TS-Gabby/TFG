@@ -63,7 +63,7 @@ public partial class UsuariosPage : ContentPage
         try
         {
             var result = new List<UsuarioModel>();
-            var Etiqueta = new UsuarioModel() { Password="1234" };
+            var Usuario = new UsuarioModel() { Password="1234" };
 
             using (var client = new HttpClient())
             {
@@ -77,8 +77,10 @@ public partial class UsuariosPage : ContentPage
 
             if (result != null)
             {
-                Etiqueta = result.Where(x => x.Id == id).FirstOrDefault();
+                Usuario = result.Where(x => x.Id == id).FirstOrDefault();
             }
+
+            await Navigation.PushAsync(new AdministrarUsuarios(Usuario));
         }
         catch (Exception ex)
         { Console.WriteLine("Error | " + ex.Message); }
@@ -88,12 +90,29 @@ public partial class UsuariosPage : ContentPage
         var result = await DisplayAlert("Información", "¿Seguro que quieres eliminar este elemento?", "Sí", "No");
         if (result)
         {
+            try
+            {
+                using (var client = new HttpClient())
+                {
+                    client.BaseAddress = new Uri("http://localhost:5034");
+                    var response = await client.DeleteAsync($"/api/Usuarios/{id}");
+                    response.EnsureSuccessStatusCode();
+                    var stringResult = await response.Content.ReadAsStringAsync();
+                }
 
+                await DisplayAlert("Información", "Usuario eliminado correctamente.", "Ok");
+                await Init();
+            }
+            catch (Exception ex)
+            {
+                await DisplayAlert("Advertencia", "Ha ocurrido un error: " + ex.Message, "Ok");
+            }
         }
     }
     
     private async void CrearNuevo(object sender, EventArgs args)
     {
-        await Navigation.PushAsync(new HomePage());
+        await Navigation.PushAsync(new AdministrarUsuarios(null));
     }
+
 }

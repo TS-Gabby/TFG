@@ -16,18 +16,19 @@
                     <ColumnDefinition Width="120"/>
                     <ColumnDefinition Width="100"/>
                     <ColumnDefinition Width="120"/>
-                    <ColumnDefinition Width="200"/>
-                    <ColumnDefinition Width="200"/>
+                    <ColumnDefinition Width="150"/>
+                    <ColumnDefinition Width="150"/>
+                    <ColumnDefinition Width="150"/>
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition />
                     <RowDefinition />
                 </Grid.RowDefinitions>
 
-                <Frame BorderColor="Black" BackgroundColor="Orange" CornerRadius="0" Grid.Column="0" Grid.ColumnSpan="8" Grid.Row="0" >
+                <Frame BorderColor="Black" BackgroundColor="Orange" CornerRadius="0" Grid.Column="0" Grid.ColumnSpan="9" Grid.Row="0" >
                     <Label Text="Juegos" VerticalOptions="Center" HorizontalOptions="Center" FontSize="Medium" FontAttributes="Bold"/>
                 </Frame>
-                <Frame BorderColor="Black" BackgroundColor="Orange" CornerRadius="0" Grid.Column="8" Grid.ColumnSpan="1" Grid.Row="0">
+                <Frame BorderColor="Black" BackgroundColor="Orange" CornerRadius="0" Grid.Column="9" Grid.ColumnSpan="1" Grid.Row="0">
                     <Button Text="+" ToolTipProperties.Text="Añadir Juego" Clicked="CrearNuevo" HorizontalOptions="End" FontSize="Medium" FontAttributes="Bold" WidthRequest="50"/>
                 </Frame>
 
@@ -58,6 +59,9 @@
                 <Frame BorderColor="Black" BackgroundColor="LightGrey" CornerRadius="0" Grid.Column="8" Grid.Row="1" >
                     <Label Text="" />
                 </Frame>
+                <Frame BorderColor="Black" BackgroundColor="LightGrey" CornerRadius="0" Grid.Column="9" Grid.Row="1" >
+                    <Label Text="" />
+                </Frame>
             </Grid>
         </CollectionView.Header>
         <CollectionView.ItemTemplate>
@@ -71,8 +75,9 @@
                         <ColumnDefinition Width="120"/>
                         <ColumnDefinition Width="100"/>
                         <ColumnDefinition Width="120"/>
-                        <ColumnDefinition Width="200"/>
-                        <ColumnDefinition Width="200"/>
+                        <ColumnDefinition Width="150"/>
+                        <ColumnDefinition Width="150"/>
+                        <ColumnDefinition Width="150"/>
                     </Grid.ColumnDefinitions>
                     <Frame BorderColor="Black" Padding="10" BackgroundColor="LightGrey" CornerRadius="0" Grid.Column="0" >
                         <Label Text="{Binding Id}" HorizontalTextAlignment="Center" VerticalOptions="Center" TextColor="Black" />
@@ -100,6 +105,9 @@
                     </Frame>
                     <Frame BorderColor="Black" Padding="10" BackgroundColor="LightGrey" CornerRadius="0" Grid.Column="8" >
                         <Button  Command="{Binding Source={x:Reference Name=Page},Path=DeleteCommand}" CommandParameter="{Binding Id}" VerticalOptions="Center" BackgroundColor="Green" Text="Delete" WidthRequest="100" />
+                    </Frame>
+                    <Frame BorderColor="Black" Padding="10" BackgroundColor="LightGrey" CornerRadius="0" Grid.Column="9" >
+                        <Button  ToolTipProperties.Text="Editar Etiquetas" Command="{Binding Source={x:Reference Name=Page},Path=EditTagCommand}" CommandParameter="{Binding Id}" VerticalOptions="Center" BackgroundColor="Green" Text=" " WidthRequest="50" />
                     </Frame>
                 </Grid>
             </DataTemplate>
