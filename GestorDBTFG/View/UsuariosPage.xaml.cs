@@ -41,7 +41,7 @@ public partial class UsuariosPage : ContentPage
         Id.Text = Global.Identificador;
         Nombre.Text = Global.Nombre;
         Contraseña.Text = Global.Contrasenha;
-        Dinero.Text = Global.Nombre;
+        Dinero.Text = Global.Dinero;
     }
 
     public async Task Init()

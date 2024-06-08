@@ -60,7 +60,7 @@
                     <Label Text="" />
                 </Frame>
                 <Frame BorderColor="Black" BackgroundColor="LightGrey" CornerRadius="0" Grid.Column="9" Grid.Row="1" >
-                    <Label Text="" />
+                    <Label Text="Etiquetas" VerticalOptions="Center" HorizontalOptions="Center" FontSize="Medium" FontAttributes="Bold" />
                 </Frame>
             </Grid>
         </CollectionView.Header>

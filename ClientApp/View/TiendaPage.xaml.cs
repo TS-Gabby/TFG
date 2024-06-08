@@ -25,7 +25,7 @@ public partial class TiendaPage : ContentView
         InitializeComponent();
 
         _ = Init();
-        //Traducir();
+        Traducir();
 
         ComprarCommand = new Command<int>(Comprar);
 
@@ -71,19 +71,10 @@ public partial class TiendaPage : ContentView
         Table.ItemsSource = ListaJuegos;
     }
 
-    //public void Traducir()
-    //{
-    //    Title = Global.AdministrarJuegos;
-    //    Title_Juego.Text = Global.Juego;
-    //    Id.Text = Global.Identificador;
-    //    Nombre.Text = Global.Nombre;
-    //    Compañía.Text = Global.Compañia;
-    //    Juego_PC.Text = Global.JuegoPC;
-    //    Juego_M.Text = Global.JuegoM;
-    //    Descuento.Text = Global.Descuento;
-    //    Precio.Text = Global.Precio;
-    //    Guardar.Text = Global.Guardar;
-    //}
+    public void Traducir()
+    {
+        Tienda.Text = Global_Client.Tienda;
+    }
 
     private async void Comprar(int Id)
     {
@@ -108,7 +99,7 @@ public partial class TiendaPage : ContentView
 
                 if (result_j.Precio > usuarioActual.Dinero)
                 {
-                    MessagingCenter.Send(this, "DisplayAlert", "No tiene suficiente dinero.");
+                    await App.Current.MainPage.DisplayAlert("Información", "No tienes suficiente dinero", "OK");
                     return;
                 }
                 usuarioActual.Dinero -= result_j.Precio * (1 + result_j.Descuento/100);
@@ -133,6 +124,8 @@ public partial class TiendaPage : ContentView
                 var content = new StringContent(json, Encoding.UTF8, "application/json");
                 var response = await client.PostAsync("/api/UsuariosXJuegos", content);
                 response.EnsureSuccessStatusCode();
+
+                await App.Current.MainPage.DisplayAlert("Información", "Se ha comprado correctamente", "OK");
 
                 _ = Init();
             }

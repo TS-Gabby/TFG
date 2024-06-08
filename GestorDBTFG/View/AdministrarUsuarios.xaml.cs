@@ -139,7 +139,7 @@ public partial class AdministrarUsuarios : ContentPage
             }
 
             await DisplayAlert("Información", "Usuario editado correctamente.", "Ok");
-            await Navigation.PushAsync(new RolesPage());
+            await Navigation.PushAsync(new UsuariosPage());
         }
         catch (Exception ex)
         {

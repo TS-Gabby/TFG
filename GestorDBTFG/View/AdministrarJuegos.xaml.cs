@@ -76,7 +76,7 @@ public partial class AdministrarJuegos : ContentPage
             }
 
             await DisplayAlert("Información", "Juego creado correctamente.", "Ok");
-            await Navigation.PushAsync(new RolesPage());
+            await Navigation.PushAsync(new JuegosPage());
         }
         catch (Exception ex)
         {

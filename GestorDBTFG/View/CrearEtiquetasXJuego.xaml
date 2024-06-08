@@ -13,7 +13,7 @@
             <Entry Text="{Binding IdEtiqueta}" TextColor="Black" IsVisible="False"/>
 
             <Label x:Name="NombreJ" Padding="10,5,20,5" TextColor="Black" IsEnabled="False"/>
-            <Entry Text="{Binding NombreJ}" TextColor="Black" />
+            <Entry Text="{Binding NombreJ}" TextColor="Black" IsEnabled="False"/>
 
             <Picker x:Name="PickerEtiquetaXJuego" ItemsSource="{Binding Source={x:Reference Name=Page},Path=EtiquetasNuevas}" SelectedItem="{Binding Source={x:Reference Name=Page}, Path=SelectedEtiqueta}" TextColor="Black">
                 <Picker.ItemDisplayBinding>

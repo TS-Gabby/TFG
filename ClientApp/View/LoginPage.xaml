@@ -16,6 +16,12 @@
                 <Label x:Name="Password" Padding="10,5,20,5" TextColor="Black"/>
                 <Entry Text="{Binding Password}" TextColor="Black" IsPassword="True" />
 
+                <Label x:Name="Registrar" Padding="10,5,20,5" TextColor="Black" >
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnRegistrarClicked" />
+                    </Label.GestureRecognizers>
+                </Label>
+
                 <Button x:Name="Boton_IniciarSesion" VerticalOptions="EndAndExpand" HorizontalOptions="Fill" Clicked="Login" TextColor="White"/>
 
             </StackLayout>

@@ -1,5 +1,8 @@
 using System.Globalization;
 using ClientApp.Resources;
+using Microsoft.VisualBasic;
+using ClientApp.Sqlite;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace ClientApp.View;
 
@@ -30,10 +33,32 @@ public partial class ConfigPage : ContentPage
         return true;
     }
 
-    public void Traducir()
+    public async void Traducir()
     {
-        Title = Global.Configuracion;
-        PikerLanguaje.Title = Global.EscogerIdioma;
+        var dbContext = new DbContextSQLite(ClientApp.Sqlite.Constants.DatabasePath);
+        var usuarioActual = (await dbContext.GetUsuariosAsync()).FirstOrDefault();
+
+        Title = Global_Client.Configuracion;
+        PikerLanguaje.Title = Global_Client.EscogerIdioma;
+        Informacion.Text = Global_Client.Informacion;
+        Nombre.Text = Global_Client.Nombre + ": " + usuarioActual.Nombre;
+        Dinero.Text = Global_Client.Dinero + ": " + usuarioActual.Dinero + "€";
+
+        ImageSource file;
+
+        using (var client = new HttpClient())
+        {
+            client.BaseAddress = new Uri("http://localhost:5034");
+            var response = await client.GetAsync($"/api/Files/like.png");
+            response.EnsureSuccessStatusCode();
+
+            byte[] fileBytes = await response.Content.ReadAsByteArrayAsync();
+
+            file = ImageSource.FromStream(() => new MemoryStream(fileBytes));
+        }
+
+        if (file != null)
+            Imagen.Source = file;
     }
 
     void OnChange(object sender, EventArgs e)

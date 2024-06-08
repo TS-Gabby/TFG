@@ -79,13 +79,16 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Compile Update="Resources\Global.Designer.cs">
-        <DependentUpon>Global.resx</DependentUpon>
+      <Compile Update="Resources\Global_Client.Designer.cs">
         <DesignTime>True</DesignTime>
         <AutoGen>True</AutoGen>
+        <DependentUpon>Global_Client.resx</DependentUpon>
       </Compile>
       <Compile Update="View\BibliotecaPage.xaml.cs">
         <DependentUpon>BibliotecaPage.xaml</DependentUpon>
+      </Compile>
+      <Compile Update="View\RegistrarPage.xaml.cs">
+        <DependentUpon>RegistrarPage.xaml</DependentUpon>
       </Compile>
       <Compile Update="View\TiendaPage.xaml.cs">
         <DependentUpon>TiendaPage.xaml</DependentUpon>
@@ -103,14 +106,17 @@
     </ItemGroup>
 
     <ItemGroup>
-      <EmbeddedResource Update="Resources\Global.resx">
-        <LastGenOutput>Global.Designer.cs</LastGenOutput>
+      <EmbeddedResource Update="Resources\Global_Client.resx">
         <Generator>ResXFileCodeGenerator</Generator>
+        <LastGenOutput>Global_Client.Designer.cs</LastGenOutput>
       </EmbeddedResource>
     </ItemGroup>
 
     <ItemGroup>
       <MauiXaml Update="View\BibliotecaPage.xaml">
+        <Generator>MSBuild:Compile</Generator>
+      </MauiXaml>
+      <MauiXaml Update="View\RegistrarPage.xaml">
         <Generator>MSBuild:Compile</Generator>
       </MauiXaml>
       <MauiXaml Update="View\TiendaPage.xaml">

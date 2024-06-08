@@ -117,127 +117,53 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Biblioteca" xml:space="preserve">
+    <value>Biblioteca</value>
+  </data>
+  <data name="Jugar" xml:space="preserve">
+    <value>Xogar</value>
+  </data>
+  <data name="Instalar" xml:space="preserve">
+    <value>Instalar</value>
+  </data>
   <data name="IniciarSesion" xml:space="preserve">
     <value>Iniciar Sesión</value>
   </data>
-  <data name="Usuario" xml:space="preserve">
-    <value>Usuario</value>
-  </data>
   <data name="Contrasenha" xml:space="preserve">
-    <value>Contraseña</value>
+    <value>Contrasinal</value>
   </data>
   <data name="Nombre" xml:space="preserve">
-    <value>Nombre</value>
+    <value>Nome</value>
   </data>
   <data name="Configuracion" xml:space="preserve">
     <value>Configuración</value>
   </data>
   <data name="EscogerIdioma" xml:space="preserve">
-    <value>Elija un idioma</value>
-  </data>
-  <data name="TablaUsuario" xml:space="preserve">
-    <value>Tabla de Usuarios</value>
-  </data>
-  <data name="Identificador" xml:space="preserve">
-    <value>Id</value>
-  </data>
-  <data name="Dinero" xml:space="preserve">
-    <value>Dinero</value>
-  </data>
-  <data name="SinDatos" xml:space="preserve">
-    <value>No hay datos</value>
-  </data>
-  <data name="AñadirRol" xml:space="preserve">
-    <value>Añadir Rol</value>
-  </data>
-  <data name="AñadirUsuario" xml:space="preserve">
-    <value>Añadir Usuario</value>
-  </data>
-  <data name="TablaRol" xml:space="preserve">
-    <value>Tabla de Roles</value>
-  </data>
-  <data name="Roles" xml:space="preserve">
-    <value>Roles</value>
-  </data>
-  <data name="TablaJuego" xml:space="preserve">
-    <value>Tabla de Juegos</value>
-  </data>
-  <data name="AñadirJuego" xml:space="preserve">
-    <value>Añadir Juego</value>
-  </data>
-  <data name="Compañia" xml:space="preserve">
-    <value>Compañía</value>
-  </data>
-  <data name="DisponiblePC" xml:space="preserve">
-    <value>PC</value>
-  </data>
-  <data name="DisponibleM" xml:space="preserve">
-    <value>Móvil</value>
-  </data>
-  <data name="Porcentaje" xml:space="preserve">
-    <value>%</value>
-  </data>
-  <data name="Precio" xml:space="preserve">
-    <value>Precio</value>
-  </data>
-  <data name="AñadirEtiquetaXJuego" xml:space="preserve">
-    <value>Añadir Etiqueta al Juego</value>
+    <value>Escoller o Idioma</value>
   </data>
   <data name="Casa" xml:space="preserve">
     <value>Casa</value>
   </data>
-  <data name="TablaEtiqueta" xml:space="preserve">
-    <value>Tabla de Etiquetas</value>
+  <data name="Tienda" xml:space="preserve">
+    <value>Tenda</value>
   </data>
-  <data name="Bienvenida" xml:space="preserve">
-    <value>Bienvenido a mi TFC</value>
+  <data name="Registrar" xml:space="preserve">
+    <value>¿Non tes conta?
+Rexistrarse</value>
   </data>
-  <data name="Etiquetas" xml:space="preserve">
-    <value>Etiquetas</value>
-  </data>
-  <data name="AñadirEtiqueta" xml:space="preserve">
-    <value>Añadir Etiqueta</value>
-  </data>
-  <data name="AdministrarUsuario" xml:space="preserve">
-    <value>Administrar Usuario</value>
+  <data name="Identificador" xml:space="preserve">
+    <value>Id</value>
   </data>
   <data name="Guardar" xml:space="preserve">
-    <value>Guardar</value>
+    <value>Gardar</value>
   </data>
-  <data name="Rol" xml:space="preserve">
-    <value>Rol</value>
+  <data name="Registro" xml:space="preserve">
+    <value>Rexistro</value>
   </data>
-  <data name="AdminstrarRoles" xml:space="preserve">
-    <value>Administrar Roles</value>
+  <data name="Informacion" xml:space="preserve">
+    <value>Información do Perfil</value>
   </data>
-  <data name="AdministrarEtiquetas" xml:space="preserve">
-    <value>Administrar Etiquetas</value>
-  </data>
-  <data name="Etiqueta" xml:space="preserve">
-    <value>Etiqueta</value>
-  </data>
-  <data name="AdministrarJuegos" xml:space="preserve">
-    <value>Administrar Juegos</value>
-  </data>
-  <data name="Juego" xml:space="preserve">
-    <value>Juego</value>
-  </data>
-  <data name="JuegoPC" xml:space="preserve">
-    <value>Juego para PC</value>
-  </data>
-  <data name="JuegoM" xml:space="preserve">
-    <value>Juego para Móvil</value>
-  </data>
-  <data name="Descuento" xml:space="preserve">
-    <value>Descuento</value>
-  </data>
-  <data name="AñadirJuegoXEtiqueta" xml:space="preserve">
-    <value>Añadir EtiquetasXJuegos</value>
-  </data>
-  <data name="EtiquetaXJuego" xml:space="preserve">
-    <value>EtiquetaXJuego</value>
-  </data>
-  <data name="NombreJ" xml:space="preserve">
-    <value>Nombre Juego</value>
+  <data name="Dinero" xml:space="preserve">
+    <value>Diñero</value>
   </data>
 </root>

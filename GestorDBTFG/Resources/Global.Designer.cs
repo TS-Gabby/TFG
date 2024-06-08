@@ -288,6 +288,15 @@ namespace GestorDBTFG.Resources {
         /// <summary>
         ///   Busca una cadena traducida similar a .
         /// </summary>
+        internal static string Informacion {
+            get {
+                return ResourceManager.GetString("Informacion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a .
+        /// </summary>
         internal static string IniciarSesion {
             get {
                 return ResourceManager.GetString("IniciarSesion", resourceCulture);

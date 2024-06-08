@@ -240,4 +240,7 @@
   <data name="NombreJ" xml:space="preserve">
     <value>Nome Xogo</value>
   </data>
+  <data name="Informacion" xml:space="preserve">
+    <value>Información do Perfil</value>
+  </data>
 </root>

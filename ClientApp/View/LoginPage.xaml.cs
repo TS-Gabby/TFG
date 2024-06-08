@@ -26,10 +26,11 @@ public partial class LoginPage : ContentPage
 
     public void Traducir()
     {
-        Titulo_IniciarSesion.Text = Global.IniciarSesion;
-        Boton_IniciarSesion.Text = Global.IniciarSesion;
-        Password.Text = Global.Contrasenha;
-        Nombre.Text = Global.Nombre;
+        Titulo_IniciarSesion.Text = Global_Client.IniciarSesion;
+        Boton_IniciarSesion.Text = Global_Client.IniciarSesion;
+        Password.Text = Global_Client.Contrasenha;
+        Nombre.Text = Global_Client.Nombre;
+        Registrar.Text = Global_Client.Registrar;
     }
 
     private async void Login(object sender, EventArgs e)
@@ -47,29 +48,15 @@ public partial class LoginPage : ContentPage
 
                 var stringResult = await response.Content.ReadAsStringAsync();
                 result = JsonConvert.DeserializeObject<List<UsuarioModel>>(stringResult);
-
-
-                response = await client.GetAsync("/api/Roles");
-                response.EnsureSuccessStatusCode();
-
-                var stringResult_rol = await response.Content.ReadAsStringAsync();
-                result_rol = JsonConvert.DeserializeObject<List<RolModel>>(stringResult_rol);
             }
 
-            if (result.IsNullOrEmpty() || result_rol.IsNullOrEmpty())
+            if (result.IsNullOrEmpty())
             {
                 await DisplayAlert("Error", "Credenciales incorrectas", "OK");
                 return;
             }
 
-            var aux_rol = result_rol.Where(x => (x.Nombre??"").Equals("Admin")).FirstOrDefault(); // Solo Admins
-            if (aux_rol == null)
-            {
-                await DisplayAlert("Error", "Credenciales incorrectas", "OK");
-                return;
-            }
-
-            var aux_user = result.Where(x => x.Nombre == _loginModel.Username && x.RolId == aux_rol.Id).FirstOrDefault(); 
+            var aux_user = result.Where(x => x.Nombre == _loginModel.Username).FirstOrDefault(); 
             if (aux_user == null)
             {
                 await DisplayAlert("Error", "Credenciales incorrectas", "OK");
@@ -115,5 +102,10 @@ public partial class LoginPage : ContentPage
 
         await dbContext.SaveUsuarioAsync(nuevoUsuario);
 
+    }
+
+    public async static void OnRegistrarClicked(object sender, EventArgs args)
+    {
+        await Application.Current.MainPage.Navigation.PushAsync(new RegistrarPage());
     }
 }

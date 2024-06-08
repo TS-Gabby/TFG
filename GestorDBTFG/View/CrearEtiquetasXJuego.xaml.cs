@@ -107,7 +107,7 @@ public partial class CrearEtiquetasXJuego : ContentPage
     {
         if (string.IsNullOrEmpty(SelectedEtiqueta?.Name??""))
         {
-            await DisplayAlert("Advertencia", "El nombre no puede ser nulo.", "Ok");
+            await DisplayAlert("Advertencia", "La etiqueta no puede ser nula.", "Ok");
             return;
         }
 

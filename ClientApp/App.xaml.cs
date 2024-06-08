@@ -10,6 +10,15 @@ namespace ClientApp
 
             MainPage = new NavigationPage(new LoginPage());
         }
+        protected override Window CreateWindow(IActivationState activationState)
+        {
+            var window = base.CreateWindow(activationState);
+            if (window != null)
+            {
+                window.Title = "App Cliente";
+            }
 
+            return window;
+        }
     }
 }

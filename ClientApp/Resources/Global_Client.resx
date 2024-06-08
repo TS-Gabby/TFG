@@ -97,10 +97,16 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.3500.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="IniciarSesion" xml:space="preserve">
+  <data name="Biblioteca" xml:space="preserve">
     <value></value>
   </data>
-  <data name="Usuario" xml:space="preserve">
+  <data name="Instalar" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Jugar" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="IniciarSesion" xml:space="preserve">
     <value></value>
   </data>
   <data name="Contrasenha" xml:space="preserve">
@@ -115,109 +121,28 @@
   <data name="EscogerIdioma" xml:space="preserve">
     <value></value>
   </data>
-  <data name="TablaUsuario" xml:space="preserve">
+  <data name="Casa" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Tienda" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Registrar" xml:space="preserve">
     <value></value>
   </data>
   <data name="Identificador" xml:space="preserve">
     <value></value>
   </data>
-  <data name="Dinero" xml:space="preserve">
-    <value></value>
-  </data>
-  <data name="SinDatos" xml:space="preserve">
-    <value></value>
-  </data>
-  <data name="AñadirRol" xml:space="preserve">
-    <value></value>
-  </data>
-  <data name="AñadirUsuario" xml:space="preserve">
-    <value></value>
-  </data>
-  <data name="TablaRol" xml:space="preserve">
-    <value></value>
-  </data>
-  <data name="Roles" xml:space="preserve">
-    <value></value>
-  </data>
-  <data name="TablaJuego" xml:space="preserve">
-    <value></value>
-  </data>
-  <data name="AñadirJuego" xml:space="preserve">
-    <value></value>
-  </data>
-  <data name="Compañia" xml:space="preserve">
-    <value></value>
-  </data>
-  <data name="DisponiblePC" xml:space="preserve">
-    <value></value>
-  </data>
-  <data name="DisponibleM" xml:space="preserve">
-    <value></value>
-  </data>
-  <data name="Porcentaje" xml:space="preserve">
-    <value></value>
-  </data>
-  <data name="Precio" xml:space="preserve">
-    <value></value>
-  </data>
-  <data name="AñadirEtiquetaXJuego" xml:space="preserve">
-    <value></value>
-  </data>
-  <data name="Casa" xml:space="preserve">
-    <value></value>
-  </data>
-  <data name="TablaEtiqueta" xml:space="preserve">
-    <value></value>
-  </data>
-  <data name="Bienvenida" xml:space="preserve">
-    <value></value>
-  </data>
-  <data name="Etiquetas" xml:space="preserve">
-    <value></value>
-  </data>
-  <data name="AñadirEtiqueta" xml:space="preserve">
-    <value></value>
-  </data>
-  <data name="AdministrarUsuario" xml:space="preserve">
-    <value></value>
-  </data>
   <data name="Guardar" xml:space="preserve">
     <value></value>
   </data>
-  <data name="Rol" xml:space="preserve">
+  <data name="Registro" xml:space="preserve">
     <value></value>
   </data>
-  <data name="AdminstrarRoles" xml:space="preserve">
+  <data name="Informacion" xml:space="preserve">
     <value></value>
   </data>
-  <data name="AdministrarEtiquetas" xml:space="preserve">
-    <value></value>
-  </data>
-  <data name="Etiqueta" xml:space="preserve">
-    <value></value>
-  </data>
-  <data name="AdministrarJuegos" xml:space="preserve">
-    <value></value>
-  </data>
-  <data name="Juego" xml:space="preserve">
-    <value></value>
-  </data>
-  <data name="JuegoPC" xml:space="preserve">
-    <value></value>
-  </data>
-  <data name="JuegoM" xml:space="preserve">
-    <value></value>
-  </data>
-  <data name="Descuento" xml:space="preserve">
-    <value></value>
-  </data>
-  <data name="AñadirJuegoXEtiqueta" xml:space="preserve">
-    <value></value>
-  </data>
-  <data name="EtiquetaXJuego" xml:space="preserve">
-    <value></value>
-  </data>
-  <data name="NombreJ" xml:space="preserve">
+  <data name="Dinero" xml:space="preserve">
     <value></value>
   </data>
 </root>

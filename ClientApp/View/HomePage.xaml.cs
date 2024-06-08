@@ -7,7 +7,9 @@ namespace ClientApp.View
         public HomePage()
         {
             InitializeComponent(); 
-            //Traducir();
+            Traducir();
+
+            contentView.Content = new TiendaPage();
         }
         protected override bool OnBackButtonPressed()
         {
@@ -15,16 +17,13 @@ namespace ClientApp.View
             return true;
         }
 
-        //public void Traducir()
-        //{
-        //    Title = Global.Casa;
-        //    TablaEtiquetas.Text = Global.TablaEtiqueta;
-        //    TablaJuegos.Text = Global.TablaJuego;
-        //    TablaRoles.Text = Global.TablaRol;
-        //    TablaUsuarios.Text = Global.TablaUsuario;
-        //    Bienvenida.Text = Global.Bienvenida;
-        //    Configuración.Text = Global.Configuracion;
-        //}
+        public void Traducir()
+        {
+            Title = Global_Client.Casa;
+            Tienda.Text = Global_Client.Tienda; 
+            Biblioteca.Text = Global_Client.Biblioteca;
+            Configuracion.Text = Global_Client.Configuracion;
+        }
 
         private async void OnTiendaClicked(object sender, EventArgs e)
         {

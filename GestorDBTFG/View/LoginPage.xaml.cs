@@ -4,6 +4,7 @@ using GestorDBTFG.Sqlite;
 using GestorDBTFG.Sqlite.Models;
 using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json;
+using static SQLite.SQLite3;
 
 namespace GestorDBTFG.View;
 
@@ -26,7 +27,6 @@ public partial class LoginPage : ContentPage
 
     public void Traducir()
     {
-        Configuracion.Text = Global.Configuracion;
         Titulo_IniciarSesion.Text = Global.IniciarSesion;
         Boton_IniciarSesion.Text = Global.IniciarSesion;
         Password.Text = Global.Contrasenha;
@@ -116,10 +116,5 @@ public partial class LoginPage : ContentPage
 
         await dbContext.SaveUsuarioAsync(nuevoUsuario);
 
-    }
-
-    private async void Config(object sender, EventArgs args)
-    {
-        await Navigation.PushAsync(new ConfigPage());
     }
 }

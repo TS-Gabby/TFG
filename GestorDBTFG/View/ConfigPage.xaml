@@ -6,6 +6,10 @@
         <Frame BorderColor="Black" Padding="0" HorizontalOptions="Center" VerticalOptions="Start">
             <StackLayout Margin="20" Padding="25,20,20,25" WidthRequest="250" HeightRequest="400" BackgroundColor="LightGrey">
 
+                <Label x:Name="Informacion" HorizontalOptions="CenterAndExpand" FontAttributes="Bold" Padding="0,5,15,5" FontSize="Medium" TextColor="Black" />
+                <Label x:Name="Nombre" Padding="10,5,20,5" TextColor="Black" />
+                <Label x:Name="Dinero" Padding="10,5,20,25" TextColor="Black" />
+
                 <Picker x:Name="PikerLanguaje" SelectedIndexChanged="OnChange">
                     <Picker.ItemsSource>
                         <x:Array Type="{x:Type x:String}">
@@ -14,6 +18,8 @@
                         </x:Array>
                     </Picker.ItemsSource>
                 </Picker>
+
+                <Button x:Name="Boton_CerrarSesion" Text="Cerrar Sesión" VerticalOptions="EndAndExpand" HorizontalOptions="Fill" Clicked="CerrarSesion" TextColor="White"/>
 
             </StackLayout>
         </Frame>

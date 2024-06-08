@@ -1,5 +1,6 @@
 using System.Globalization;
 using GestorDBTFG.Resources;
+using GestorDBTFG.Sqlite;
 
 namespace GestorDBTFG.View;
 
@@ -26,14 +27,20 @@ public partial class ConfigPage : ContentPage
     }
     protected override bool OnBackButtonPressed()
     {
-        Navigation.PushAsync(new LoginPage());
+        Navigation.PushAsync(new HomePage());
         return true;
     }
 
-    public void Traducir()
+    public async void Traducir()
     {
+        var dbContext = new DbContextSQLite(Constants.DatabasePath);
+        var usuarioActual = (await dbContext.GetUsuariosAsync()).FirstOrDefault();
+
         Title = Global.Configuracion;
         PikerLanguaje.Title = Global.EscogerIdioma;
+        Informacion.Text = Global.Informacion;
+        Nombre.Text = Global.Nombre + ": " + usuarioActual.Nombre;
+        Dinero.Text = Global.Dinero + ": " + usuarioActual.Dinero + "€";
     }
 
     void OnChange(object sender, EventArgs e)
@@ -53,4 +60,8 @@ public partial class ConfigPage : ContentPage
         CultureInfo.DefaultThreadCurrentCulture = new CultureInfo(language);
     }
 
+    void CerrarSesion(object sender, EventArgs e)
+    {
+        Navigation.PushAsync(new LoginPage());
+    }
 }

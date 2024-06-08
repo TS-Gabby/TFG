@@ -5,7 +5,7 @@
              x:Name="Page">
 
     <VerticalStackLayout>
-        <Label Text="Biblioteca" FontSize="30" FontAttributes="Bold" BackgroundColor="#454546" TextColor="LightBlue"/>
+        <Label x:Name="Biblioteca" FontSize="30" FontAttributes="Bold" BackgroundColor="#454546" TextColor="LightBlue"/>
         <ListView x:Name="Table" SeparatorVisibility="Default" ItemsSource="{Binding ListaJuegos}" HasUnevenRows="True">
             <ListView.ItemTemplate>
                 <DataTemplate>
@@ -19,7 +19,7 @@
                                 </Grid.ColumnDefinitions>
                                 <Label Text="{Binding Nombre}" VerticalOptions="CenterAndExpand" TextColor="LightBlue" Grid.Column="0"/>
                                 <Label Text="{Binding Compania}" VerticalOptions="CenterAndExpand" TextColor="LightBlue" Grid.Column="1"/>
-                                <Button Text="Jugar" VerticalOptions="CenterAndExpand" Command="{Binding Source={x:Reference Name=Page}, Path=JugarCommand}" CommandParameter="{Binding Id}" BackgroundColor="#272727" TextColor="LightBlue" Grid.Column="2"/>
+                                <Button Text="{Binding Source={x:Reference Name=Page}, Path=TextoBtnJugar}" VerticalOptions="CenterAndExpand" Command="{Binding Source={x:Reference Name=Page}, Path=JugarCommand}" CommandParameter="{Binding Id}" BackgroundColor="#272727" TextColor="LightBlue" Grid.Column="2"/>
                             </Grid>
                         </Frame>
                     </ViewCell>

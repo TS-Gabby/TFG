@@ -5,7 +5,13 @@
              BackgroundColor="#454546">
     <Grid BackgroundColor="#454546">
         <Frame BorderColor="Black" Padding="0" HorizontalOptions="Center" VerticalOptions="Start" BackgroundColor="#272727">
-            <StackLayout Margin="20" Padding="25,20,20,25" WidthRequest="250" HeightRequest="400" BackgroundColor="LightGrey">
+            <StackLayout Margin="20" Padding="25,20,20,25" WidthRequest="250" HeightRequest="500" BackgroundColor="LightGrey">
+
+                <Label x:Name="Informacion" HorizontalOptions="CenterAndExpand" FontAttributes="Bold" Padding="0,5,15,5" FontSize="Medium" TextColor="Black" />
+                <Label x:Name="Nombre" Padding="10,5,20,5" TextColor="Black" />
+                <Label x:Name="Dinero" Padding="10,5,20,25" TextColor="Black" />
+
+                <Image x:Name="Imagen" WidthRequest="150" HeightRequest="150" />
 
                 <Picker x:Name="PikerLanguaje" SelectedIndexChanged="OnChange">
                     <Picker.ItemsSource>

@@ -7,6 +7,8 @@ using System.Text;
 using Microsoft.EntityFrameworkCore;
 using static SQLite.SQLite3;
 using System.Windows.Input;
+using ClientApp.Resources;
+using Windows.Media.Protection.PlayReady;
 
 namespace ClientApp.View;
 
@@ -18,14 +20,26 @@ public partial class BibliotecaPage : ContentView
 
     private UsuariosXJuegosModel? UsuarioXJuego;
     public ICommand JugarCommand { get; set; }
-    //private JuegoModel Juego = new();
+
+    private string _TextoBtnJugar;
+    public string TextoBtnJugar
+    {
+        get { return _TextoBtnJugar; }
+        set
+        {
+            if (_TextoBtnJugar != value)
+            {
+                _TextoBtnJugar = value;
+                OnPropertyChanged(nameof(TextoBtnJugar));
+            }
+        }
+    }
 
     public BibliotecaPage()
     {
         InitializeComponent();
 
         _ = Init();
-        //Traducir();
 
         JugarCommand = new Command<int>(Jugar);
 
@@ -66,80 +80,45 @@ public partial class BibliotecaPage : ContentView
 
         }
         catch (Exception ex)
-        { Console.WriteLine("Error | " + ex.Message); }
+        { await App.Current.MainPage.DisplayAlert("Alerta", "Error: " + ex.Message, "OK"); }
 
         Table.ItemsSource = ListaJuegos;
+        Traducir();
     }
 
-    //public void Traducir()
-    //{
-    //    Title = Global.AdministrarJuegos;
-    //    Title_Juego.Text = Global.Juego;
-    //    Id.Text = Global.Identificador;
-    //    Nombre.Text = Global.Nombre;
-    //    Compañía.Text = Global.Compañia;
-    //    Juego_PC.Text = Global.JuegoPC;
-    //    Juego_M.Text = Global.JuegoM;
-    //    Descuento.Text = Global.Descuento;
-    //    Precio.Text = Global.Precio;
-    //    Guardar.Text = Global.Guardar;
-    //}
+    public void Traducir()
+    {
+        Biblioteca.Text = Global_Client.Biblioteca;
+        TextoBtnJugar = Global_Client.Instalar + "/" + Global_Client.Jugar;
+    }
 
     private async void Jugar(int Id)
     {
-        //try
-        //{
-        //    JuegoModel result_j;
+        try
+        {
+            var aux = true;
 
-        //    UsuarioXJuego = new UsuariosXJuegosModel()
-        //    {
-        //        IdJuego = Id,
-        //        IdUsuario = usuarioActual.Code,
-        //    };
+            if (System.IO.File.Exists(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + $"\\Downloads\\{Id}.exe"))
+                aux = false;
 
-        //    using (var client = new HttpClient())
-        //    {
-        //        client.BaseAddress = new Uri("http://localhost:5034");
-        //        var response_j = await client.GetAsync($"/api/Juegos/{Id}");
-        //        response_j.EnsureSuccessStatusCode();
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("http://localhost:5034");
+                var response = await client.GetAsync($"/api/Files/{Id + ".exe"}");
+                response.EnsureSuccessStatusCode();
 
-        //        var stringResult = await response_j.Content.ReadAsStringAsync();
-        //        result_j = JsonConvert.DeserializeObject<JuegoModel>(stringResult);
+                byte[] fileBytes = await response.Content.ReadAsByteArrayAsync();
 
-        //        if (result_j.Precio > usuarioActual.Dinero)
-        //        {
-        //            MessagingCenter.Send(this, "DisplayAlert", "No tiene suficiente dinero.");
-        //            return;
-        //        }
-        //        usuarioActual.Dinero -= result_j.Precio * (1 + result_j.Descuento/100);
+                await System.IO.File.WriteAllBytesAsync(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + $"\\Downloads\\{Id}.exe", fileBytes);
+            }
 
-        //        var aux = new UsuarioModel()
-        //        {
-        //            Id = usuarioActual.Code,
-        //            Password = usuarioActual.Password,
-        //            Dinero = usuarioActual.Dinero,
-        //            Nombre = usuarioActual.Nombre,
-        //            RolId = usuarioActual.RolId,
-        //        };
+            if (aux)
+                await App.Current.MainPage.DisplayAlert("Información", "Se ha descargado correctamente", "OK");
+            else
+                await App.Current.MainPage.DisplayAlert("Información", "Se ejecutaría el juego", "OK");
 
-        //        //Restamos el precio en el dinero del usuario
-        //        //var json = JsonConvert.SerializeObject(aux);
-        //        //var content = new StringContent(json, Encoding.UTF8, "application/json");
-        //        //var response_u = await client.PutAsync($"/api/Usuarios/{usuarioActual.Code}", content);
-        //        //response_u.EnsureSuccessStatusCode();
-
-        //        //Creamos la asociación Usuario <--> Juego
-        //        var json = JsonConvert.SerializeObject(UsuarioXJuego);
-        //        var content = new StringContent(json, Encoding.UTF8, "application/json");
-        //        var response = await client.PostAsync("/api/UsuariosXJuegos", content);
-        //        response.EnsureSuccessStatusCode();
-
-        //        _ = Init();
-        //    }
-        //}
-        //catch (Exception ex)
-        //{
-        //}
+        }
+        catch (Exception ex) { }
     }
 
 }
