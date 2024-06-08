@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ClientApp.View.TiendaPage"
+             x:Name="Page">
+
+    <VerticalStackLayout>
+        <Label Text="Tienda" FontSize="30" FontAttributes="Bold" BackgroundColor="#454546" TextColor="LightBlue"/>
+        <ListView x:Name="Table" SeparatorVisibility="Default" ItemsSource="{Binding ListaJuegos}" HasUnevenRows="True">
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                <ViewCell>
+                    <Frame BorderColor="Black" Margin="10" Padding="7" BackgroundColor="#454546" CornerRadius="0">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Label Text="{Binding Nombre}" VerticalOptions="CenterAndExpand" TextColor="LightBlue" Grid.Column="0"/>
+                            <Label Text="{Binding Compania}" VerticalOptions="CenterAndExpand" TextColor="LightBlue" Grid.Column="1"/>
+                            <Label Text="{Binding Descuento}" VerticalOptions="CenterAndExpand" TextColor="LightBlue" Grid.Column="2"/>
+                            <Label Text="{Binding Precio}" VerticalOptions="CenterAndExpand" TextColor="LightBlue" Grid.Column="3"/>
+                            <Button Text="Comprar" VerticalOptions="CenterAndExpand" Command="{Binding Source={x:Reference Name=Page}, Path=ComprarCommand}" CommandParameter="{Binding Id}" BackgroundColor="#272727" TextColor="LightBlue" Grid.Column="4"/>
+                        </Grid>
+                    </Frame>
+                </ViewCell>
+            </DataTemplate>
+        </ListView.ItemTemplate>
+        </ListView>
+    </VerticalStackLayout>
+</ContentView>

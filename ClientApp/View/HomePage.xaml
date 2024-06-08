@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ClientApp.View.HomePage"
+             BackgroundColor="#454546">
+
+    <Grid ColumnSpacing="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="300" />
+            <ColumnDefinition Width="300" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="300" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <HorizontalStackLayout BackgroundColor="#272727" Grid.Column="0" Grid.ColumnSpan="4" Grid.Row="0" HorizontalOptions="FillAndExpand">
+            <Button x:Name="Tienda" Text="Tienda" Grid.Column="0" Grid.Row="0" HorizontalOptions="FillAndExpand" Clicked="OnTiendaClicked" Margin="10" BackgroundColor="#454546" TextColor="LightBlue"/>
+            <Button x:Name="Biblioteca" Text="Biblioteca" Grid.Column="1" Grid.Row="0" HorizontalOptions="FillAndExpand" Clicked="OnBibliotecaPage" Margin="10" BackgroundColor="#454546" TextColor="LightBlue"/>
+            <Label Text=" "  Grid.Column="2" Grid.Row="0" HorizontalOptions="FillAndExpand" Margin="10" BackgroundColor="#454546" TextColor="LightBlue"/>
+            <Button x:Name="Configuracion" Text="Configuracion" Grid.Column="3" Grid.Row="0" HorizontalOptions="EndAndExpand" Clicked="Config" Margin="10" BackgroundColor="#454546" TextColor="LightBlue"/>
+        </HorizontalStackLayout>
+
+        <ContentView x:Name="contentView" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="4" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="#454546" />
+    </Grid>
+</ContentPage>

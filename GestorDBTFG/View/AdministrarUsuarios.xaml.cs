@@ -134,7 +134,7 @@ public partial class AdministrarUsuarios : ContentPage
                 client.BaseAddress = new Uri("http://localhost:5034");
                 var json = JsonConvert.SerializeObject(Usuario);
                 var content = new StringContent(json, Encoding.UTF8, "application/json");
-                var response = await client.PutAsync($"/api/Roles/{Usuario.Id}", content);
+                var response = await client.PutAsync($"/api/Usuarios/{Usuario.Id}", content);
                 response.EnsureSuccessStatusCode();
             }
 

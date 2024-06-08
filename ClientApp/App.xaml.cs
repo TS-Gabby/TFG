@@ -1,4 +1,6 @@
-﻿namespace ClientApp
+﻿using ClientApp.View;
+
+namespace ClientApp
 {
     public partial class App : Application
     {
@@ -6,7 +8,8 @@
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+            MainPage = new NavigationPage(new LoginPage());
         }
+
     }
 }
