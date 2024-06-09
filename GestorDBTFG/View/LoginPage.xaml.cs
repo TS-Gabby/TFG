@@ -73,7 +73,7 @@ public partial class LoginPage : ContentPage
             var aux_user = result.Where(x => x.Nombre == _loginModel.Username && x.RolId == aux_rol.Id).FirstOrDefault(); 
             if (aux_user == null)
             {
-                await DisplayAlert("Error", "Credenciales incorrectas", "OK");
+                await DisplayAlert("Error", "Solo se admiten Administradores", "OK");
                 return;
             }
 

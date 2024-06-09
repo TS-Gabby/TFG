@@ -103,7 +103,7 @@ public partial class TiendaPage : ContentView
                     return;
                 }
                 usuarioActual.Dinero -= result_j.Precio * (1 + result_j.Descuento/100);
-
+                 
                 var aux = new UsuarioModel()
                 {
                     Id = usuarioActual.Code,
@@ -114,14 +114,16 @@ public partial class TiendaPage : ContentView
                 };
 
                 //Restamos el precio en el dinero del usuario
-                //var json = JsonConvert.SerializeObject(aux);
-                //var content = new StringContent(json, Encoding.UTF8, "application/json");
-                //var response_u = await client.PutAsync($"/api/Usuarios/{usuarioActual.Code}", content);
-                //response_u.EnsureSuccessStatusCode();
+                var json = JsonConvert.SerializeObject(aux);
+                var content = new StringContent(json, Encoding.UTF8, "application/json");
+                var response_u = await client.PutAsync($"/api/Usuarios/{usuarioActual.Code}", content);
+                response_u.EnsureSuccessStatusCode();
+
+                ActualizarUsuarioActual(aux);
 
                 //Creamos la asociación Usuario <--> Juego
-                var json = JsonConvert.SerializeObject(UsuarioXJuego);
-                var content = new StringContent(json, Encoding.UTF8, "application/json");
+                json = JsonConvert.SerializeObject(UsuarioXJuego);
+                content = new StringContent(json, Encoding.UTF8, "application/json");
                 var response = await client.PostAsync("/api/UsuariosXJuegos", content);
                 response.EnsureSuccessStatusCode();
 
@@ -132,7 +134,38 @@ public partial class TiendaPage : ContentView
         }
         catch (Exception ex)
         {
+            await App.Current.MainPage.DisplayAlert("Advertencia", "Ha ocurrido un erorr: " + ex.Message, "OK");
         }
     }
+
+
+    async static Task ActualizarUsuarioActual(UsuarioModel usuario)
+    {
+        var dbContext = new DbContextSQLite(Constants.DatabasePath);
+
+        UsuarioActual nuevoUsuario = new()
+        {
+            Code = usuario.Id,
+            Nombre = usuario.Nombre,
+            Password = usuario.Password,
+            Dinero = usuario.Dinero,
+            RolId = usuario.RolId,
+        };
+
+        var usuarios = await dbContext.GetUsuariosAsync();
+        if (usuarios.Count > 0)
+        {
+            UsuarioActual usuarioEditar = usuarios.First();
+            nuevoUsuario.Id = usuarioEditar.Id;
+        }
+        else
+        {
+            nuevoUsuario.Id = 0;
+        }
+
+        await dbContext.SaveUsuarioAsync(nuevoUsuario);
+
+    }
+
 
 }

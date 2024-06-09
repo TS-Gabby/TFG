@@ -9,6 +9,7 @@ using static SQLite.SQLite3;
 using System.Windows.Input;
 using ClientApp.Resources;
 using Windows.Media.Protection.PlayReady;
+using System.Diagnostics;
 
 namespace ClientApp.View;
 
@@ -115,10 +116,23 @@ public partial class BibliotecaPage : ContentView
             if (aux)
                 await App.Current.MainPage.DisplayAlert("Información", "Se ha descargado correctamente", "OK");
             else
+            {
                 await App.Current.MainPage.DisplayAlert("Información", "Se ejecutaría el juego", "OK");
 
+                ProcessStartInfo startInfo = new ProcessStartInfo
+                {
+                    FileName = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + $"\\Downloads\\{Id}.exe",
+                    UseShellExecute = true 
+                };
+
+                Process.Start(startInfo);
+            }
+
         }
-        catch (Exception ex) { }
+        catch (Exception ex) 
+        {
+            await App.Current.MainPage.DisplayAlert("Información", "No existe el instalador, contacte con soporte", "OK");
+        }
     }
 
 }
