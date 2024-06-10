@@ -1,6 +1,7 @@
 using GestorDBTFG.Model;
 using Newtonsoft.Json;
 using System.Windows.Input;
+using static SQLite.SQLite3;
 
 namespace GestorDBTFG.View;
 
@@ -58,6 +59,7 @@ public partial class AdministrarEtiquetasXJuego : ContentPage
                 NombreJ = Juego.Nombre ?? "",
             }).ToList();
 
+        await SetEtiquetasName(ListaJuegoXEtiquetas);
         JuegoXEtiquetasCollection.ItemsSource = ListaJuegoXEtiquetas;
     }
 
@@ -90,5 +92,30 @@ public partial class AdministrarEtiquetasXJuego : ContentPage
     private async void CrearNuevo(object sender, EventArgs args)
     {
         await Navigation.PushAsync(new CrearEtiquetasXJuego(Juego));
+    }
+
+    private async Task SetEtiquetasName(List<JuegoXEtiquetaModel> lista)
+    {
+        var result = new List<EtiquetaModel>();
+
+        try
+        {
+
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("http://localhost:5034");
+                var response = await client.GetAsync("/api/Etiquetas");
+                response.EnsureSuccessStatusCode();
+
+                var stringResult = await response.Content.ReadAsStringAsync();
+                result = JsonConvert.DeserializeObject<List<EtiquetaModel>>(stringResult);
+            }
+
+        foreach (var item in lista)
+            item.NombreE = result.Where(x => x.Id == item.IdEtiqueta).Select(x => x.Nombre).FirstOrDefault();
+        }
+        catch (Exception ex)
+        { Console.WriteLine("Error | " + ex.Message); }
+
     }
 }

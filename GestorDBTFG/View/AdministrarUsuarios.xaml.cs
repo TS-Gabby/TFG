@@ -34,6 +34,7 @@ public partial class AdministrarUsuarios : ContentPage
     {
         Title = Global.AdministrarUsuario;
         Titulo_Usuario.Text = Global.Usuario;
+        Nombre.Text = Global.Nombre;
         Id.Text = Global.Identificador;
         Contraseña.Text = Global.Contrasenha;
         Dinero.Text = Global.Dinero;

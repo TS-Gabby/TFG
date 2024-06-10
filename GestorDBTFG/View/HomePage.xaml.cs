@@ -11,7 +11,7 @@ namespace GestorDBTFG.View
         }
         protected override bool OnBackButtonPressed()
         {
-            Navigation.PushAsync(new LoginPage());
+            Navigation.PushAsync(new HomePage());
             return true;
         }
 
